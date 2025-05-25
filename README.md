@@ -26,7 +26,7 @@
 
 ### TODO:
 
-- [] Bubble Component
+- [ ] Bubble Component
   - [x] Different colors on bubble (get color vars as input somehow)
   - [x] Click to reveal component
   - [ ] Animate bubble and component expansion
