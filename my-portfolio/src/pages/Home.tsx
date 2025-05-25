@@ -108,6 +108,7 @@ const nodeData: Node[] = [
     },
 ];
 
+
 const Home = () => {
     const [activeSection, setActiveSection] = useState<string | null>(null);
     const [sectionAnchor, setSectionAnchor] = useState<{ x: number; y: number } | null>(null);
@@ -117,11 +118,26 @@ const Home = () => {
             <RenderNode
                 node={nodeData[0]}
                 onSelectSection={(section, pos) => {
-                    setActiveSection(section);
-                    setSectionAnchor(pos);
+                    console.log("test" + section);
+
+
+                    if (section == "") {
+                        setActiveSection(null);
+                        setSectionAnchor(null);
+                        return;
+                    }
+
+                    if (activeSection === section) {
+                        setActiveSection(null);
+                        setSectionAnchor(null);
+                    } else {
+                        setActiveSection(section);
+                        setSectionAnchor(pos);
+                    }
                 }}
                 isVisible={true}
             />
+
 
             {activeSection === 'about' && sectionAnchor && (
                 <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: -200 }}>
@@ -140,6 +156,7 @@ const Home = () => {
             )}
         </div>
     );
+
 };
 
 export default Home;

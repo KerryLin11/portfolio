@@ -4,6 +4,8 @@ import RelativeTo from './RelativeTo';
 import Bubble from './Bubble';
 import type { Node } from './mindmap';
 
+
+
 const RenderNode = ({
     node,
     onSelectSection,
@@ -14,6 +16,8 @@ const RenderNode = ({
     isVisible: boolean;
 }) => {
     const [expanded, setExpanded] = useState(false);
+
+
 
     if (!isVisible) return null;
 
@@ -27,8 +31,14 @@ const RenderNode = ({
                         onClick={() => {
                             if (node.linkToSection) {
                                 onSelectSection(node.linkToSection, pos);
-                            } else if (node.children?.length) {
-                                setExpanded((prev) => !prev);
+                                // console.log('clicked a node with a section');
+                            } else {
+                                onSelectSection("", pos);
+                                // console.log('clicked a node with no section');
+
+                                if (node.children?.length) {
+                                    setExpanded((prev) => !prev);
+                                }
                             }
                         }}
                     />

@@ -21,6 +21,9 @@
 # React
 - React is basically OOP with composition > inheritance
 
+# Bugs
+- [x] Close section components on reclick
+
 ### TODO:
 
 - [] Bubble Component
