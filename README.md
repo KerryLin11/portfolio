@@ -24,16 +24,21 @@
 ### TODO:
 
 - [] Bubble Component
-  - [ ] Different colors on bubble (get color vars as input somehow)
-  - [ ] Click to reveal component
+  - [x] Different colors on bubble (get color vars as input somehow)
+  - [x] Click to reveal component
   - [ ] Animate bubble and component expansion
-  - [ ] Add child bubbles
+  - [x] Add child bubbles
 - [x] Panning functionality on infinite canvas 
 - [x] Zoom functionality 
-- [ ] Refractor each make each component into a "node" containing a worldPos
-- [ ] 
-- [ ] 
-- [ ] 
+- [x] Refractor each make each bubble into a "node" containing a worldPos
+- [ ] Create cards for about and contact
+- [ ] Add SFX for UI (cbs doing this rn)
+- [ ] Design the projects section.
+- [ ] Find a way to embed my projects into the portfolio site
+  - [ ] Unity webgl build (also that vr project)
+  - [ ] Unreal engine build
+  - [ ] Regular js projects
+  - [ ] github repos
 - [ ] 
 - [ ] 
 - [ ] 
