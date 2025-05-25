@@ -6,7 +6,6 @@
         "**/.gitignore": true,
         "**/components.json": true,
         "**/eslint.config.js": true,
-        "**/index.html": true,
         "**/jsconfig.json": true,
         "**/package-lock.json": true,
         "**/tsconfig.json": true,

@@ -1,8 +1,8 @@
-const About = () => (
-    <div style={{ padding: '2rem' }}>
-        <h1>About Page</h1>
-        <p>This is a sample about page.</p>
+const AboutSection = () => (
+    <div className="p-6 text-white bg-gray-800 rounded-lg max-w-xl mx-auto mt-4">
+        <h2 className="text-xl font-bold mb-2">About Me</h2>
+        <p>lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
 );
 
-export default About;
+export default AboutSection;
