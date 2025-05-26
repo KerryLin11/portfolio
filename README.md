@@ -5,6 +5,7 @@
 - **Vite**: Modern frontend server
 - **Tailwind CSS**: Utility CSS for UI
 - **TypeScript**: cuz I already know js
+- **Framer Motion**: Animations
 
 ## Development Skills
 - **Component Design**: reusable components
@@ -20,6 +21,7 @@
 
 ## React
 - React is basically OOP with composition > inheritance
+- It's really easy to corrupt node_modules with npm install and uninstall for some reason. Clear caches, delete node_modules reinstall dependancies, add   optimizeDeps: {} to vite.config.ts
 
 # Bugs
 - [x] Close section components on reclick

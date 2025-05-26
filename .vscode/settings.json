@@ -11,6 +11,6 @@
         "**/tsconfig.json": true,
         "**/tsconfig.app.json": true,
         "**/tsconfig.node.json": true,
-        "**/vite.config.ts": true
+        // "**/vite.config.ts": true
     }
 }
