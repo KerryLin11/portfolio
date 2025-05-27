@@ -11,6 +11,17 @@ interface RelativeToProps {
     children: (worldPos: Point) => React.ReactNode;
 }
 
+
+// Takes an anchor point and an optional offset, calculates the final world position (worldPos)
+// and renders its child component centered at that position
+
+/**
+ * A component that positions its child relative to a given anchor point.
+ *
+ * @param {Point} anchor - The base position in world coordinates.
+ * @param {Point} [offset={ x: 0, y: 0 }] - Optional offset applied to the anchor.
+ * @param {(worldPos: Point) => React.ReactNode} children - A render function that receives the computed world position.
+ */
 const RelativeTo = ({
     anchor,
     offset = { x: 0, y: 0 },
@@ -18,30 +29,13 @@ const RelativeTo = ({
 }: RelativeToProps) => {
     const worldPos = { x: anchor.x + offset.x, y: anchor.y + offset.y };
 
-    // Convert worldPos to screen coordinates here:
-    // For simplicity, let's assume a function worldToScreen exists
-    // You can replace this with your own zoom/pan logic
-
-    const worldToScreen = (pos: Point) => {
-        // Example stub — replace with your app's zoom/pan transform
-        const scale = 1; // zoom scale
-        const pan = { x: 0, y: 0 }; // pan offset
-        return {
-            x: pos.x * scale + pan.x,
-            y: pos.y * scale + pan.y,
-        };
-    };
-
-    const screenPos = worldToScreen(worldPos);
-
     return (
         <div
             style={{
                 position: 'absolute',
-                left: screenPos.x,
-                top: screenPos.y,
-                transform: 'translate(-50%, -50%)', // center the element on the point
-                pointerEvents: 'auto',
+                left: worldPos.x,
+                top: worldPos.y,
+                transform: 'translate(-50%, -50%)',
             }}
         >
             {children(worldPos)}
