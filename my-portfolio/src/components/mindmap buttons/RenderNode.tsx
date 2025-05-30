@@ -1,10 +1,9 @@
 // RenderNode.tsx
 import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import RelativeTo from './RelativeTo';
 import Bubble from './Bubble';
 import type { Node } from './mindmap';
-
-
 
 interface RenderNodeProps {
     node: Node;
@@ -19,8 +18,6 @@ const RenderNode = ({
 }: RenderNodeProps) => {
     const [expanded, setExpanded] = useState(false);
 
-
-    // Guard clause: if node shouldn’t be seen, don’t render anything.
     if (!isVisible) return null;
 
     return (
@@ -33,11 +30,8 @@ const RenderNode = ({
                         onClick={() => {
                             if (node.linkToSection) {
                                 onSelectSection(node.linkToSection, pos);
-                                // console.log('clicked a node with a section');
                             } else {
                                 onSelectSection("", pos);
-                                // console.log('clicked a node with no section');
-
                                 if (node.children?.length) {
                                     setExpanded((prev) => !prev);
                                 }
@@ -47,15 +41,27 @@ const RenderNode = ({
                 )}
             </RelativeTo>
 
-            {expanded &&
-                node.children?.map((child) => (
-                    <RenderNode
-                        key={child.id}
-                        node={child}
-                        onSelectSection={onSelectSection}
-                        isVisible={true}
-                    />
-                ))}
+            <AnimatePresence>
+                {expanded &&
+                    node.children?.map((child) => (
+                        <motion.div
+                            key={child.id}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            transition={{
+                                duration: 0.5,          // Slower enter animation
+                                exit: { duration: 0.2 } // Faster exit animation
+                            }}
+                        >
+                            <RenderNode
+                                node={child}
+                                onSelectSection={onSelectSection}
+                                isVisible={true}
+                            />
+                        </motion.div>
+                    ))}
+            </AnimatePresence>
         </>
     );
 };

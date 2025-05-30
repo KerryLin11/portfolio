@@ -5,6 +5,7 @@ import ContactSection from '../pages/Contact';
 import RenderNode from '@/components/mindmap buttons/RenderNode';
 import type { Node } from '@/components/mindmap buttons/mindmap';
 import RelativeTo from '@/components/mindmap buttons/RelativeTo';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const nodeData: Node[] = [
     {
@@ -112,56 +113,75 @@ const Home = () => {
     const [activeSection, setActiveSection] = useState<string | null>(null);
     const [sectionAnchor, setSectionAnchor] = useState<{ x: number; y: number } | null>(null);
 
-    const renderActiveSection = () => {
-        if (!sectionAnchor || !activeSection) return null;
-
-        switch (activeSection) {
-            case 'about':
-                return (
-                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: -220 }}>
-                        {() => <AboutSection />}
-                    </RelativeTo>
-                );
-            case 'projects':
-                return (
-                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 150 }}>
-                        {() => <ProjectsSection />}
-                    </RelativeTo>
-                );
-            case 'contact':
-                return (
-                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 200 }}>
-                        {() => <ContactSection />}
-                    </RelativeTo>
-                );
-            default:
-                return null;
+    const handleSelect = (section: string, pos: { x: number; y: number }) => {
+        if (section === '' || activeSection === section) {
+            setActiveSection(null);
+            setSectionAnchor(null);
+        } else {
+            setActiveSection(section);
+            setSectionAnchor(pos);
         }
     };
+
+
 
     return (
         <div className="relative w-screen h-screen">
             <RenderNode
                 node={nodeData[0]}
-                onSelectSection={(section, pos) => {
-                    if (section === '') {
-                        setActiveSection(null);
-                        setSectionAnchor(null);
-                        return;
-                    }
-
-                    if (activeSection === section) {
-                        setActiveSection(null);
-                        setSectionAnchor(null);
-                    } else {
-                        setActiveSection(section);
-                        setSectionAnchor(pos);
-                    }
-                }}
+                onSelectSection={handleSelect}
                 isVisible={true}
             />
 
-            {renderActiveSection()}
+            <AnimatePresence>
+                {activeSection === 'about' && sectionAnchor && (
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: -200 }}>
+                        {() => (
+                            <motion.div
+                                key="about"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <AboutSection />
+                            </motion.div>
+                        )}
+                    </RelativeTo>
+                )}
+
+                {activeSection === 'projects' && sectionAnchor && (
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 100 }}>
+                        {() => (
+                            <motion.div
+                                key="projects"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 20 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <ProjectsSection />
+                            </motion.div>
+                        )}
+                    </RelativeTo>
+                )}
+
+                {activeSection === 'contact' && sectionAnchor && (
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 200 }}>
+                        {() => (
+                            <motion.div
+                                key="contact"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <ContactSection />
+                            </motion.div>
+                        )}
+                    </RelativeTo>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

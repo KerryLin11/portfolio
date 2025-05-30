@@ -56,6 +56,16 @@
   </tr>
 </table>
 
+## Framer Motion
+- `<AnimatePresence>` allows you to animate a component that's removed from the DOM
+- `<motion.div>` turns children into components that can be animated with Framer Motion
+  - `key="contact"` is used to identify the component for `AnimatePresence`
+  - `initial={{ opacity: 0, scale: 0.95 }}` Initial Conditions
+  - `animate={{ opacity: 1, scale: 1 }}` End Conditions
+  - `exit={{ opacity: 0, scale: 0.95 }}` Exit Animation
+  - `transition={{ duration: 0.3 }}` is the duration of the animation
+  - With the current above setup, `initial -> animate` is `0.3s` and `animate -> exit` is `0.3s`.
+  - `transition={{ duration: 0.3, exit: { duration: 0.2 } }}` This allows you to specify enter and exit durations separately.
 
 # Bugs
 - [x] Close section components on reclick
