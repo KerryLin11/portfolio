@@ -6,19 +6,21 @@ import type { Node } from './mindmap';
 
 
 
+interface RenderNodeProps {
+    node: Node;
+    onSelectSection: (section: string, pos: { x: number; y: number }) => void;
+    isVisible: boolean;
+}
+
 const RenderNode = ({
     node,
     onSelectSection,
     isVisible,
-}: {
-    node: Node;
-    onSelectSection: (section: string, pos: { x: number; y: number }) => void;
-    isVisible: boolean;
-}) => {
+}: RenderNodeProps) => {
     const [expanded, setExpanded] = useState(false);
 
 
-
+    // Guard clause: if node shouldn’t be seen, don’t render anything.
     if (!isVisible) return null;
 
     return (

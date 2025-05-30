@@ -108,20 +108,43 @@ const nodeData: Node[] = [
     },
 ];
 
-
 const Home = () => {
     const [activeSection, setActiveSection] = useState<string | null>(null);
     const [sectionAnchor, setSectionAnchor] = useState<{ x: number; y: number } | null>(null);
+
+    const renderActiveSection = () => {
+        if (!sectionAnchor || !activeSection) return null;
+
+        switch (activeSection) {
+            case 'about':
+                return (
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: -220 }}>
+                        {() => <AboutSection />}
+                    </RelativeTo>
+                );
+            case 'projects':
+                return (
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 150 }}>
+                        {() => <ProjectsSection />}
+                    </RelativeTo>
+                );
+            case 'contact':
+                return (
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 200 }}>
+                        {() => <ContactSection />}
+                    </RelativeTo>
+                );
+            default:
+                return null;
+        }
+    };
 
     return (
         <div className="relative w-screen h-screen">
             <RenderNode
                 node={nodeData[0]}
                 onSelectSection={(section, pos) => {
-                    console.log("test" + section);
-
-
-                    if (section == "") {
+                    if (section === '') {
                         setActiveSection(null);
                         setSectionAnchor(null);
                         return;
@@ -138,25 +161,9 @@ const Home = () => {
                 isVisible={true}
             />
 
-
-            {activeSection === 'about' && sectionAnchor && (
-                <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: -200 }}>
-                    {() => <AboutSection />}
-                </RelativeTo>
-            )}
-            {activeSection === 'projects' && sectionAnchor && (
-                <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 100 }}>
-                    {() => <ProjectsSection />}
-                </RelativeTo>
-            )}
-            {activeSection === 'contact' && sectionAnchor && (
-                <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 100 }}>
-                    {() => <ContactSection />}
-                </RelativeTo>
-            )}
+            {renderActiveSection()}
         </div>
     );
-
 };
 
 export default Home;
