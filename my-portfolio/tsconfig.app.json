@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "outDir": "dist",
+    "types": [
+      "vite/client"
+    ],
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2020",
     "useDefineForClassFields": true,
@@ -31,6 +35,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
+  "extends": "./tsconfig.json",
   "include": [
     "src"
   ]

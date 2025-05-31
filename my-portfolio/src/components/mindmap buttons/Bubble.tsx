@@ -30,9 +30,9 @@ const Bubble = ({
                 },
             }}
             whileTap={{ scale: 0.9 }}
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0.9 }}
             transition={{
                 type: 'spring',
                 stiffness: 300,

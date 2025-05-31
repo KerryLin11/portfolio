@@ -144,7 +144,7 @@ const Home = () => {
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <AboutSection />
+                                <AboutSection onClose={() => setActiveSection(null)} />
                             </motion.div>
                         )}
                     </RelativeTo>
@@ -176,7 +176,7 @@ const Home = () => {
                                 exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <ContactSection />
+                                <ContactSection onClose={() => setActiveSection(null)} />
                             </motion.div>
                         )}
                     </RelativeTo>

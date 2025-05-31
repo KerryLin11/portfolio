@@ -11,6 +11,12 @@
 
 # Notes:
 
+## General
+- `npm run build` builds the project
+- `npm run preview` previews the build
+- `npm run dev` runs the dev server
+- Clean Reset: `rm -r -fo node_modules && npm install` deletes the node_modules folder and reinstalls it. (Useful for when files are corrupted)
+
 ## React Router Dom
 - React-router-dom `<Link>` binds urls to react components removing the need for `<a>` tags which requires page reloads
 - All children components inside `<Router>` can access routing info
@@ -19,42 +25,51 @@
 ## React
 - React is basically OOP with composition > inheritance
 - Surround functions in `{() => {return someJSX}}` if you want to return JSX expressions
-- `useState<>()` is a hook that allows you to create state variables
- - Eg: `const [activeSection, setActiveSection] = useState<string | null>(null);`
- - `activeSection` is the state variable
- - `setActiveSection` is a setter function to update the state
- - `<string | null>` defines the state variable type
- - `(null)` is the initial value
-- `useEffect` hook that runs after component returns
-- `useRef` hook that allows you cache the same reference between rerenders
-- `useMemo` hook that avoids rerunning functions in component rerenders by caching the result
-- `useCallback` hook that avoids rerunning functions in component rerenders by caching the function. (caches the same function instance)
-- Component Hook Rendering Life-cycle:
-- WheelEvent.deltaX` and `event.deltaY` is axis scrollSpeed per frame (scrollSpeed/1 frame). 
+- Hooks
+  - `useState<>()` is a hook that allows you to create state variables
+    - Eg: `const [activeSection, setActiveSection] = useState<string | null>(null);`
+    - `activeSection` is the state variable
+    - `setActiveSection` is a setter function to update the state
+    - `<string | null>` defines the state variable type
+    - `(null)` is the initial value
+  - `useEffect` hook that runs after component returns
+  - `useRef` hook that allows you cache the same reference between rerenders
+  - `useMemo` hook that avoids rerunning functions in component rerenders by caching the result
+  - `useCallback` hook that avoids rerunning functions in component rerenders by caching the function. (caches the same function instance)
+  - Component Hook Rendering Life-cycle:
+    - <table>
+      <tr>
+        <th>Hook</th>
+        <th>When it Runs</th>
+      </tr>
+      <tr>
+        <td>useState</td>
+        <td>On function call</td>
+      </tr>
+      <tr>
+        <td>useEffect</td>
+        <td>After render and DOM update</td>
+      </tr>
+      <tr>
+        <td>useRef</td>
+        <td>Doesn't cause re-renders; survives across them</td>
+      </tr>
+      <tr>
+        <td>useMemo, useCallback</td>
+        <td>Caches values/functions. Only recalculates if dependencies change.
+    </td>
+      </tr>
+    </table>
 
-<table>
-  <tr>
-    <th>Hook</th>
-    <th>When it Runs</th>
-  </tr>
-  <tr>
-    <td>useState</td>
-    <td>On function call</td>
-  </tr>
-  <tr>
-    <td>useEffect</td>
-    <td>After render and DOM update</td>
-  </tr>
-  <tr>
-    <td>useRef</td>
-    <td>Doesn't cause re-renders; survives across them</td>
-  </tr>
-  <tr>
-    <td>useMemo, useCallback</td>
-    <td>Caches values/functions. Only recalculates if dependencies change.
-</td>
-  </tr>
-</table>
+- `WheelEvent.deltaX` and `event.deltaY` is axis scrollSpeed per frame (scrollSpeed / 1 frame). 
+- Mouse Events
+  - `onMouseDown` → M1 pressed down.
+  - `onMouseUp` → M1 released
+  - `onMouseLeave` → Mouse leaves element boundaries
+  - `onTouchStart` → Finger touch screen
+  - `onTouchEnd` → Finger no longer touch screen 🦍
+
+
 
 ## Framer Motion
 - `<AnimatePresence>` allows you to animate a component that's removed from the DOM

@@ -1,11 +1,34 @@
+import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 import { FaEnvelope, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { motion } from 'framer-motion'
 
-const Contact = () => {
+
+type SectionProps = {
+    onClose: () => void;
+};
+
+
+const Contact = ({ onClose }: SectionProps) => {
+    const [isTapping, setIsTapping] = useState(false)
+
     return (
-        <div className="max-w-sm mx-auto bg-white text-gray-800 p-6 rounded-xl shadow-md relative">
-            <button className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-xl">
+        <motion.div
+            animate={{ scale: isTapping ? 0.98 : 1 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            className="max-w-sm mx-auto bg-white text-gray-800 p-6 rounded-xl shadow-md relative"
+        >
+            <Button
+                onClick={onClose}
+                variant="closeButton"
+                className="absolute -top-2 -right-2"
+                onMouseDown={() => setIsTapping(true)}
+                onMouseUp={() => setIsTapping(false)}
+                onMouseLeave={() => setIsTapping(false)}
+                onTouchStart={() => setIsTapping(true)}
+                onTouchEnd={() => setIsTapping(false)}>
                 &times;
-            </button>
+            </Button>
             <h2 className="text-xl font-semibold mb-1 flex items-center">
                 <FaEnvelope className="w-5 h-5 mr-2" />
                 Contact Me
@@ -46,7 +69,7 @@ const Contact = () => {
             <p className="text-xs text-gray-500">
                 Feel free to reach out for collaborations, opportunities, or just to say hello!
             </p>
-        </div>
+        </motion.div >
     );
 };
 

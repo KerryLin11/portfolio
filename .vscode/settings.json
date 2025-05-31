@@ -1,16 +1,16 @@
 {
     "files.exclude": {
-        "**/.gitattributes": true,
-        "**/package.json": true,
-        "**/node_modules": true,
-        "**/.gitignore": true,
-        "**/components.json": true,
-        "**/eslint.config.js": true,
-        "**/jsconfig.json": true,
-        "**/package-lock.json": true,
-        "**/tsconfig.json": true,
-        "**/tsconfig.app.json": true,
-        "**/tsconfig.node.json": true,
+        // "**/.gitattributes": true,
+        // "**/package.json": true,
+        // "**/node_modules": true,
+        // "**/.gitignore": true,
+        // "**/components.json": true,
+        // "**/eslint.config.js": true,
+        // "**/jsconfig.json": true,
+        // "**/package-lock.json": true,
+        // "**/tsconfig.json": true,
+        // "**/tsconfig.app.json": true,
+        // "**/tsconfig.node.json": true,
         // "**/vite.config.ts": true
     }
 }

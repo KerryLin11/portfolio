@@ -1,6 +1,6 @@
 // RenderNode.tsx
 import { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import RelativeTo from './RelativeTo';
 import Bubble from './Bubble';
 import type { Node } from './mindmap';
@@ -41,19 +41,25 @@ const RenderNode = ({
                 )}
             </RelativeTo>
 
-            // Entry/exit animations handled inside RenderNode or its children (e.g., Bubble)
             <AnimatePresence>
                 {expanded &&
                     node.children?.map((child) => (
-                        <RenderNode
+                        <motion.div
                             key={child.id}
-                            node={child}
-                            onSelectSection={onSelectSection}
-                            isVisible={true}
-                        />
+                            exit={{ opacity: 0, scale: 0.98 }}
+                            transition={{
+                                duration: 0.3,
+                                ease: 'easeOut',
+                            }}
+                        >
+                            <RenderNode
+                                node={child}
+                                onSelectSection={onSelectSection}
+                                isVisible={true}
+                            />
+                        </motion.div>
                     ))}
             </AnimatePresence>
-
         </>
     );
 };

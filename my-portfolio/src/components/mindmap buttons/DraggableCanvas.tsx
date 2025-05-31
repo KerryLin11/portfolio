@@ -36,7 +36,7 @@ const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
         setIsDragging(false);
     };
 
-    
+
     /*
         Get relative mousePos
         Convert to canvas space
@@ -50,45 +50,47 @@ const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
         If pan:
             Update position
     */
-    
+
     const handleWheel = (e: React.WheelEvent) => {
         // e.preventDefault();
-      
+
         if (!containerRef.current) return;
-      
+
         const rect = containerRef.current.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
-      
+
         const canvasX = (mouseX - position.x) / scale;
         const canvasY = (mouseY - position.y) / scale;
-      
+
         const isZoomGesture = e.ctrlKey || Math.abs(e.deltaY) > 50;
         // const isZoomGesture = Math.abs(e.deltaY) > Math.abs(e.deltaX);Math.abs(e.deltaY) > Math.abs(e.deltaX);
 
         if (isZoomGesture) {
-          const zoomMultiplier = Math.abs(e.deltaY) < 10 ? 0.020 : 0.01;
-          const zoomAmount = -e.deltaY * zoomMultiplier;
-      
-          let newScale = scale + zoomAmount;
-          newScale = Math.min(MAX_ZOOM_OUT, Math.max(MIN_ZOOM_IN, newScale));
-      
+            //   const zoomMultiplier = Math.abs(e.deltaY) < 10 ? 0.020 : 0.010;       // Trackpad
+            const zoomMultiplier = Math.abs(e.deltaY) < 10 ? 0.005 : 0.001; // Mouse
 
-          // Take mouse position in window space then subtract the mouse position in canvas space after scaling
-          const newPosX = mouseX - canvasX * newScale;
-          const newPosY = mouseY - canvasY * newScale;
-      
-          setScale(newScale);
-          setPosition({ x: newPosX, y: newPosY });
+            const zoomAmount = -e.deltaY * zoomMultiplier;
+
+            let newScale = scale + zoomAmount;
+            newScale = Math.min(MAX_ZOOM_OUT, Math.max(MIN_ZOOM_IN, newScale));
+
+
+            // Take mouse position in window space then subtract the mouse position in canvas space after scaling
+            const newPosX = mouseX - canvasX * newScale;
+            const newPosY = mouseY - canvasY * newScale;
+
+            setScale(newScale);
+            setPosition({ x: newPosX, y: newPosY });
         } else { // Panning logic (invert deltaX/deltaY for trackpad)
-          setPosition({
-            x: position.x - e.deltaX,
-            y: position.y - e.deltaY,
-          });
+            setPosition({
+                x: position.x - e.deltaX,
+                y: position.y - e.deltaY,
+            });
         }
-      };
-      
-    
+    };
+
+
 
     useEffect(() => {
         window.addEventListener('mousemove', handleMouseMove);
