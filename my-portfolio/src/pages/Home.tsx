@@ -6,10 +6,13 @@ import RenderNode from '@/components/mindmap buttons/RenderNode';
 import type { Node } from '@/components/mindmap buttons/mindmap';
 import RelativeTo from '@/components/mindmap buttons/RelativeTo';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaUser } from 'react-icons/fa'
+
 
 const nodeData: Node[] = [
     {
         id: 'center',
+        icon: <FaUser></FaUser>,
         label: 'Your Name',
         color: 'bg-blue-500',
         position: { x: 0, y: 0 },

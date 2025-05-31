@@ -25,7 +25,8 @@ const RenderNode = ({
             <RelativeTo anchor={node.position}>
                 {(pos) => (
                     <Bubble
-                        text={node.label}
+                        label={node.label}
+                        icon={node.icon}
                         color={node.color}
                         onClick={() => {
                             if (node.linkToSection) {
