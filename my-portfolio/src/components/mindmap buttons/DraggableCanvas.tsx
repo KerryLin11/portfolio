@@ -3,60 +3,95 @@ import React, { useRef, useState, useEffect } from 'react';
 const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // Set (0,0) to center of viewport (window.innerWidth/2, window.innerHeight/2)
     const [position, setPosition] = useState({
         x: window.innerWidth / 2,
         y: window.innerHeight / 2,
     });
 
-    const [scale, setScale] = useState(1); // start scale = 1
+    const [scale, setScale] = useState(1);
     const [isDragging, setIsDragging] = useState(false);
     const dragStart = useRef({ x: 0, y: 0 });
+    const lastMouse = useRef({ x: 0, y: 0, time: 0 });
+    const velocity = useRef({ x: 0, y: 0 });
 
-    const MIN_ZOOM_IN = .5;
+    const animationRef = useRef<number | null>(null);
+
+    const MIN_ZOOM_IN = 0.5;
     const MAX_ZOOM_OUT = 3;
 
     const handleMouseDown = (e: React.MouseEvent) => {
-        // Only start dragging if clicking on the container
-        if (e.target !== containerRef.current) return;
+        const target = e.target as HTMLElement;
+        console.log(target);
+
+        const isCanvasClick = containerRef.current && containerRef.current === target;
+        const isNoBlock = target.classList.contains('no-block');
+        console.log(isCanvasClick, isNoBlock);
+
+
+        if (!isCanvasClick && !isNoBlock) return;
 
         setIsDragging(true);
         dragStart.current = {
             x: e.clientX - position.x,
             y: e.clientY - position.y,
         };
+        lastMouse.current = { x: e.clientX, y: e.clientY, time: performance.now() };
+
+        if (animationRef.current) {
+            cancelAnimationFrame(animationRef.current);
+            animationRef.current = null;
+        }
     };
+
 
     const handleMouseMove = (e: MouseEvent) => {
         if (!isDragging) return;
+
+        const now = performance.now();
+        const dt = now - lastMouse.current.time;
+        const dx = e.clientX - lastMouse.current.x;
+        const dy = e.clientY - lastMouse.current.y;
+
         setPosition({
             x: e.clientX - dragStart.current.x,
             y: e.clientY - dragStart.current.y,
         });
+
+        const velocityScale = 0.2;
+
+        velocity.current = {
+            x: dx / dt * velocityScale,
+            y: dy / dt * velocityScale,
+        };
+
+        lastMouse.current = { x: e.clientX, y: e.clientY, time: now };
     };
 
     const handleMouseUp = () => {
         setIsDragging(false);
+
+        const decay = 0.95;
+
+        const animate = () => {
+            velocity.current.x *= decay;
+            velocity.current.y *= decay;
+
+            setPosition((prev) => ({
+                x: prev.x + velocity.current.x * 16,
+                y: prev.y + velocity.current.y * 16,
+            }));
+
+            if (Math.abs(velocity.current.x) > 0.01 || Math.abs(velocity.current.y) > 0.01) {
+                animationRef.current = requestAnimationFrame(animate);
+            } else {
+                animationRef.current = null;
+            }
+        };
+
+        animationRef.current = requestAnimationFrame(animate);
     };
 
-
-    /*
-        Get relative mousePos
-        Convert to canvas space
-        Detect if zoom or pan
-        If zoom:
-            Zoom in/out based on scroll direction
-            Adjust position to zoom around the mouse
-                Get mousePos in canvas space
-                Keep mousePos in the same canvas position after transforms
-            Update transforms
-        If pan:
-            Update position
-    */
-
     const handleWheel = (e: React.WheelEvent) => {
-        // e.preventDefault();
-
         if (!containerRef.current) return;
 
         const rect = containerRef.current.getBoundingClientRect();
@@ -67,33 +102,24 @@ const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
         const canvasY = (mouseY - position.y) / scale;
 
         const isZoomGesture = e.ctrlKey || Math.abs(e.deltaY) > 50;
-        // const isZoomGesture = Math.abs(e.deltaY) > Math.abs(e.deltaX);Math.abs(e.deltaY) > Math.abs(e.deltaX);
+        const zoomMultiplier = Math.abs(e.deltaY) < 10 ? 0.005 : 0.001;
 
         if (isZoomGesture) {
-            //   const zoomMultiplier = Math.abs(e.deltaY) < 10 ? 0.020 : 0.010;       // Trackpad
-            const zoomMultiplier = Math.abs(e.deltaY) < 10 ? 0.005 : 0.001; // Mouse
-
-            const zoomAmount = -e.deltaY * zoomMultiplier;
-
-            let newScale = scale + zoomAmount;
+            let newScale = scale + -e.deltaY * zoomMultiplier;
             newScale = Math.min(MAX_ZOOM_OUT, Math.max(MIN_ZOOM_IN, newScale));
 
-
-            // Take mouse position in window space then subtract the mouse position in canvas space after scaling
             const newPosX = mouseX - canvasX * newScale;
             const newPosY = mouseY - canvasY * newScale;
 
             setScale(newScale);
             setPosition({ x: newPosX, y: newPosY });
-        } else { // Panning logic (invert deltaX/deltaY for trackpad)
-            setPosition({
-                x: position.x - e.deltaX,
-                y: position.y - e.deltaY,
-            });
+        } else {
+            setPosition((prev) => ({
+                x: prev.x - e.deltaX,
+                y: prev.y - e.deltaY,
+            }));
         }
     };
-
-
 
     useEffect(() => {
         window.addEventListener('mousemove', handleMouseMove);
@@ -113,7 +139,7 @@ const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
             style={{ touchAction: 'none' }}
         >
             <div
-                className="min-w-[100vw] min-h-[100vh] text-white transition-transform duration-75 ease-out pointer-events-none"
+                className=" text-white duration-75 ease-out"
                 style={{
                     transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
                     transformOrigin: 'top left',

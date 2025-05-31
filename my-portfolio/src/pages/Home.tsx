@@ -129,7 +129,10 @@ const Home = () => {
 
 
     return (
-        <div className="relative w-screen h-screen">
+        // Home is an invisible container in the bottom right quadrant of the screen
+        // no-block custom class added to the container to allow dragging over this container. 
+
+        <div className="relative w-screen h-screen no-block">
             <RenderNode
                 node={nodeData[0]}
                 onSelectSection={handleSelect}
