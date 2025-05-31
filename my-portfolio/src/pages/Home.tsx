@@ -135,7 +135,7 @@ const Home = () => {
 
             <AnimatePresence>
                 {activeSection === 'about' && sectionAnchor && (
-                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: -200 }}>
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: -250 }}>
                         {() => (
                             <motion.div
                                 key="about"
@@ -151,7 +151,7 @@ const Home = () => {
                 )}
 
                 {activeSection === 'projects' && sectionAnchor && (
-                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 100 }}>
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 150 }}>
                         {() => (
                             <motion.div
                                 key="projects"
@@ -167,7 +167,7 @@ const Home = () => {
                 )}
 
                 {activeSection === 'contact' && sectionAnchor && (
-                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 200 }}>
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 225 }}>
                         {() => (
                             <motion.div
                                 key="contact"
