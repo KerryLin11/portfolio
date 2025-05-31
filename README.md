@@ -66,6 +66,16 @@
   - `transition={{ duration: 0.3 }}` is the duration of the animation
   - With the current above setup, `initial -> animate` is `0.3s` and `animate -> exit` is `0.3s`.
   - `transition={{ duration: 0.3, exit: { duration: 0.2 } }}` This allows you to specify enter and exit durations separately.
+  - `whileTap` animates a component when it's being tapped
+  - `whileHover` animates a component when it's being hovered
+  - `whileFocus` animates a component when it's being focused
+  - `transition={{ type: 'spring', stiffness: 300, damping: 20 }}`
+    - `type: 'spring'` animation type
+    - `stiffness: 300` spring stiffness 
+    - `damping: 20` spring dampening (similar to springjoint2d)
+    - `duration: 0.3` duration
+    - `ease: 'easeOut'` easing curve
+
 
 # Tailwind shorthands for reference
 - bg-blue-100 <!-- light version -->

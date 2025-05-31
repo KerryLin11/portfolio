@@ -22,7 +22,7 @@ const Bubble = ({
             className={`w-24 h-24 flex items-center justify-center text-white ${color} rounded-full cursor-pointer shadow-md ${className}`}
             style={style}
             whileHover={{
-                scale: 1.1,
+                scale: 1.2,
                 transition: {
                     type: 'spring',
                     stiffness: 300,
