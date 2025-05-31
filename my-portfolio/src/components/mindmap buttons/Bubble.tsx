@@ -44,7 +44,7 @@ const Bubble = ({
                 {icon}
             </motion.div>
             {label && (
-                <div className="text-sm text-gray-900 text-center text-shadow-sm font-inter" >
+                <div className="text-sm text-gray-900 text-center text-shadow-sm font-inter select-none pointer-events-none" >
                     {label}
                 </div>
             )}

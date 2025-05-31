@@ -17,6 +17,9 @@ const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
     const MAX_ZOOM_OUT = 3;
 
     const handleMouseDown = (e: React.MouseEvent) => {
+        // Only start dragging if clicking on the container
+        if (e.target !== containerRef.current) return;
+
         setIsDragging(true);
         dragStart.current = {
             x: e.clientX - position.x,
@@ -110,7 +113,7 @@ const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
             style={{ touchAction: 'none' }}
         >
             <div
-                className="min-w-[100vw] min-h-[100vh] text-white transition-transform duration-75 ease-out"
+                className="min-w-[100vw] min-h-[100vh] text-white transition-transform duration-75 ease-out pointer-events-none"
                 style={{
                     transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
                     transformOrigin: 'top left',

@@ -93,26 +93,31 @@
 
 
 # Tailwind shorthands for reference
+
+## Colors and Text
 - bg-blue-100 <!-- light version -->
 - bg-blue-500 <!-- normal version -->
 - bg-blue-900 <!-- dark version -->
 - text-white <!-- white text -->
+
+## Spacing and Layout
 - p-4 <!-- padding 4 -->
 - m-2 <!-- margin 2 -->
-- rounded-lg <!-- rounded corners -->
+- h-screen <!-- height of screen -->
+- w-screen <!-- width of screen -->
+- min-w-[100vw] <!-- min width 100vw -->
+
+## Flexbox
 - flex <!-- flex container -->
 - justify-center <!-- justify content center -->
 - items-center <!-- align items center -->
-- h-screen <!-- height of screen -->
-- w-screen <!-- width of screen -->
-- overflow-hidden <!-- overflow hidden -->
-- cursor-grab <!-- grab cursor -->
-- active:cursor-grabbing <!-- grab cursor when active -->
-- transition-transform <!-- transition transform --> 
-- duration-75 <!-- duration 75ms -->
-- ease-out <!-- ease out -->
-- hover:scale-110 <!-- on hover: scale 110% -->
+
+## Visual Effects
+- rounded-lg <!-- rounded corners -->
 - shadow-md <!-- shadow medium -->
+- overflow-hidden <!-- overflow hidden -->
+
+## Positioning
 - z-10 <!-- z-index 10 -->
 - absolute <!-- absolute positioning -->
 - relative <!-- relative positioning -->
@@ -120,6 +125,17 @@
 - top-1/2 <!-- top 50% -->
 - -translate-x-1/2 <!-- translate x -50% -->
 - -translate-y-1/2 <!-- translate y -50% -->
-- min-w-[100vw] <!-- min width 100vw -->
+
+## Interactions
+- cursor-grab <!-- grab cursor -->
+- active:cursor-grabbing <!-- grab cursor when active -->
+- select-none <!-- prevents highlighting when dragging -->
+- pointer-events-none <!-- prevents pointer events -->
+
+## Transitions and Animations
+- transition-transform <!-- transition transform --> 
+- duration-75 <!-- duration 75ms -->
+- ease-out <!-- ease out -->
+- hover:scale-110 <!-- on hover: scale 110% -->
 
 
