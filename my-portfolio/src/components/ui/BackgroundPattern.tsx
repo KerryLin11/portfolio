@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import backgroundPattern from "@/assets/backgroundPattern3.png";
+import backgroundPattern from "@/assets/backgroundPatterns/backgroundPattern3.png";
 
 const BackgroundPattern: React.FC = () => {
     const [tileSize, setTileSize] = useState({ width: 100, height: 100 });
@@ -15,11 +15,11 @@ const BackgroundPattern: React.FC = () => {
 
     return (
         <motion.div
-            className="absolute inset-0 z-0 bg-repeat pointer-events-none overflow-hidden "
+            className="absolute inset-0 z-0 bg-repeat pointer-events-none overflow-hidden"
             style={{
                 backgroundImage: `url(${backgroundPattern})`,
-                scale: 2,
             }}
+            initial={{ scale: 2 }}
             animate={{
                 backgroundPosition: [
                     `0px 0px`,
@@ -32,6 +32,7 @@ const BackgroundPattern: React.FC = () => {
                 ease: "linear",
             }}
         />
+
     );
 };
 
