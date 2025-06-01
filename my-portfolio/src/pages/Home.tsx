@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaUser } from 'react-icons/fa'
 
 
+
 const nodeData: Node[] = [
     {
         id: 'center',
@@ -138,6 +139,7 @@ const Home = () => {
                 onSelectSection={handleSelect}
                 isVisible={true}
             />
+
 
             <AnimatePresence>
                 {activeSection === 'about' && sectionAnchor && (

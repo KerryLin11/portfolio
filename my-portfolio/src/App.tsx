@@ -5,6 +5,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import DraggableCanvas from './components/mindmap buttons/DraggableCanvas';
+import DebugPage from './pages/DebugPage';
 
 
 
@@ -13,13 +14,14 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={
-            
+
+
           <DraggableCanvas>
             <Home />
           </DraggableCanvas>
 
         } />
-        <Route path="/about" element={
+        {/* <Route path="/about" element={
           <About />
         } />
         <Route path="/projects" element={
@@ -27,7 +29,11 @@ function App() {
         } />
         <Route path="/contact" element={
           <Contact />
-        } />
+        } /> */
+          <Route path="/debug" element={
+            <DebugPage />
+          } />
+        }
       </Routes>
     </Router>
   );
