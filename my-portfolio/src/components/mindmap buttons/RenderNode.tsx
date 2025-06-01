@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import RelativeTo from './RelativeTo';
 import Bubble from './Bubble';
-import type { Node } from './mindmap';
+import type { Node } from './Node';
 
 interface RenderNodeProps {
     node: Node;
@@ -28,6 +28,8 @@ const RenderNode = ({
                         label={node.label}
                         icon={node.icon}
                         color={node.color}
+                        clickSound={node.clickSound}
+                        hoverSound={node.hoverSound}
                         onClick={() => {
                             if (node.linkToSection) {
                                 onSelectSection(node.linkToSection, pos);

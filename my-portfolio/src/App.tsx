@@ -1,9 +1,9 @@
 // App.tsx
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import About from './pages/About';
-import Projects from './pages/Projects';
-import Contact from './pages/Contact';
+import AboutSection from './pages/About';
+import ProjectsSection from './pages/Projects';
+import ContactSection from './pages/Contact';
 import DraggableCanvas from './components/mindmap buttons/DraggableCanvas';
 import DebugPage from './pages/DebugPage';
 
@@ -14,26 +14,29 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={
-
-
           <DraggableCanvas>
             <Home />
           </DraggableCanvas>
+        } />
 
+
+        {/* Placeholder routes */}
+
+        {<Route path="/about" element={
+          <AboutSection onClose={() => { }} />
+        } />}
+        {<Route path="/projects" element={
+          <ProjectsSection />
+        } />}
+        {<Route path="/contact" element={
+          <ContactSection onClose={() => { }} />
+        } />}
+
+
+
+        <Route path="/debug" element={
+          <DebugPage />
         } />
-        {/* <Route path="/about" element={
-          <About />
-        } />
-        <Route path="/projects" element={
-          <Projects />
-        } />
-        <Route path="/contact" element={
-          <Contact />
-        } /> */
-          <Route path="/debug" element={
-            <DebugPage />
-          } />
-        }
       </Routes>
     </Router>
   );

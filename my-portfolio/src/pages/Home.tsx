@@ -3,7 +3,7 @@ import AboutSection from '../pages/About';
 import ProjectsSection from '../pages/Projects';
 import ContactSection from '../pages/Contact';
 import RenderNode from '@/components/mindmap buttons/RenderNode';
-import type { Node } from '@/components/mindmap buttons/mindmap';
+import type { Node } from '@/components/mindmap buttons/Node';
 import RelativeTo from '@/components/mindmap buttons/RelativeTo';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaUser } from 'react-icons/fa'
@@ -16,6 +16,7 @@ const nodeData: Node[] = [
         icon: <FaUser></FaUser>,
         label: 'Your Name',
         color: 'bg-blue-500',
+        clickSound: '/sounds/click2.wav',
         position: { x: 0, y: 0 },
         children: [
             {
@@ -91,7 +92,7 @@ const nodeData: Node[] = [
             {
                 id: 'about',
                 label: 'About',
-                color: 'bg-purple-500',
+                color: 'bg-red-400',
                 position: { x: 0, y: -250 },
                 linkToSection: 'about',
             },
@@ -143,7 +144,7 @@ const Home = () => {
 
             <AnimatePresence>
                 {activeSection === 'about' && sectionAnchor && (
-                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: -250 }}>
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: -275 }}>
                         {() => (
                             <motion.div
                                 key="about"

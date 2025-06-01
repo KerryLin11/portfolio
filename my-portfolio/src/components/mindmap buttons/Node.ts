@@ -7,4 +7,6 @@ export type Node = {
     position: { x: number; y: number };
     linkToSection?: 'about' | 'projects' | 'contact';
     children?: Node[];
+    clickSound?: string;
+    hoverSound?: string;
 };
