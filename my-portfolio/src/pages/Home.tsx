@@ -20,76 +20,6 @@ const nodeData: Node[] = [
         position: { x: 0, y: 0 },
         children: [
             {
-                id: 'skills',
-                label: 'Skills',
-                color: 'bg-purple-500',
-                position: { x: -300, y: -100 },
-                children: [
-                    {
-                        id: 'frontend',
-                        label: 'Frontend',
-                        color: 'bg-pink-500',
-                        position: { x: -450, y: -200 },
-                        children: [
-                            {
-                                id: 'react',
-                                label: 'React',
-                                color: 'bg-fuchsia-500',
-                                position: { x: -600, y: -300 },
-                            },
-                            {
-                                id: 'vue',
-                                label: 'Vue',
-                                color: 'bg-green-400',
-                                position: { x: -500, y: -350 },
-                            },
-                        ],
-                    },
-                    {
-                        id: 'backend',
-                        label: 'Backend',
-                        color: 'bg-yellow-500',
-                        position: { x: -450, y: 0 },
-                        children: [
-                            {
-                                id: 'nodejs',
-                                label: 'Node.js',
-                                color: 'bg-lime-500',
-                                position: { x: -600, y: -50 },
-                            },
-                            {
-                                id: 'python',
-                                label: 'Python',
-                                color: 'bg-cyan-500',
-                                position: { x: -550, y: 100 },
-                            },
-                        ],
-                    },
-                ],
-            },
-            {
-                id: 'education',
-                label: 'Education',
-                color: 'bg-indigo-500',
-                position: { x: 300, y: -100 },
-                children: [
-                    {
-                        id: 'university',
-                        label: 'University',
-                        color: 'bg-red-400',
-                        position: { x: 450, y: -200 },
-                        children: [
-                            {
-                                id: 'projects',
-                                label: 'Uni Projects',
-                                color: 'bg-amber-400',
-                                position: { x: 600, y: -300 },
-                            },
-                        ],
-                    },
-                ],
-            },
-            {
                 id: 'about',
                 label: 'About',
                 color: 'bg-red-400',
@@ -144,7 +74,7 @@ const Home = () => {
 
             <AnimatePresence>
                 {activeSection === 'about' && sectionAnchor && (
-                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: -275 }}>
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: 300, y: 0 }}>
                         {() => (
                             <motion.div
                                 key="about"
@@ -160,16 +90,16 @@ const Home = () => {
                 )}
 
                 {activeSection === 'projects' && sectionAnchor && (
-                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 150 }}>
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: -500, y: 0 }}>
                         {() => (
                             <motion.div
                                 key="projects"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: 20 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <ProjectsSection />
+                                <ProjectsSection onClose={() => setActiveSection(null)} />
                             </motion.div>
                         )}
                     </RelativeTo>
