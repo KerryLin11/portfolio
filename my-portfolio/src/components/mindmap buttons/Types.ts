@@ -18,6 +18,6 @@ export type Project = {
     live?: string;
     src?: string;
     tags?: string[];
-    type: 'github' | 'embed' | 'folder';
+    type: 'github' | 'embed' | 'embedLarge' | 'folder';
     children?: Project[];
 };

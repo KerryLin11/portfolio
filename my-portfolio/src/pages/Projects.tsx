@@ -58,9 +58,9 @@ const projects: Project[] = [
                 title: 'My Everything List (2018 -> Present)',
                 description: 'Site where I rate everything I consume, from games to shows to books to movies',
                 github: 'https://github.com/yourusername/quick-timer',
-                tags: ['HTML', 'CSS', 'JavaScript'],
-                type: 'embed',
-                src: 'https://itch.io/embed-upload/quick-timer-id?color=333333',
+                tags: ['JavaScript', 'Google Sheets API',],
+                type: 'embedLarge',
+                src: 'https://everything-list-2018.vercel.app/',
             },
             {
                 title: 'Cube Algorithm Timer',
@@ -89,11 +89,6 @@ type SectionProps = {
 const Projects = ({ onClose }: SectionProps) => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const [activeChildIndex, setActiveChildIndex] = useState<number | null>(null);
-
-    const handleBack = () => {
-        playSound('/sounds/close3.wav', 0.5);
-        setActiveIndex(null)
-    };
 
     const [isTapping, setIsTapping] = useState(false)
 
@@ -130,6 +125,8 @@ const Projects = ({ onClose }: SectionProps) => {
             {(activeChildIndex !== null || activeIndex !== null) && (
                 <Button
                     onClick={() => {
+                        playSound('/sounds/close3.wav', 0.5);
+
                         if (activeChildIndex !== null) {
                             setActiveChildIndex(null);
                         } else {

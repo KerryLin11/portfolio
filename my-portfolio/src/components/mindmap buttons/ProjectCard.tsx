@@ -29,8 +29,7 @@ const ProjectCard = ({
                     ))}
                 </div>
             )}
-
-            {project.type === 'embed' && project.src ? (
+            {project.type === 'embed' || project.type === 'embedLarge' && project.src ? (
                 <>
                     {project.live && (
                         <a
@@ -72,10 +71,11 @@ const ProjectCard = ({
                                 frameBorder={0}
                                 src={project.src}
                                 title={project.title}
-                                className="w-full h-full rounded-md border-2 p-2"
+                                className={`rounded-md border-2 p-2 ${project.type === 'embed' ? 'w-full h-full' : ''
+                                    }`}
                                 allowFullScreen
-                                width={980}
-                                height={640}
+                                width={project.type === 'embedLarge' ? 800 : 980}
+                                height={project.type === 'embedLarge' ? 600 : 640}
                             />
                         </div>
                     )}
