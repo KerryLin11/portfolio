@@ -10,3 +10,14 @@ export type Node = {
     clickSound?: string;
     hoverSound?: string;
 };
+
+export type Project = {
+    title: string;
+    description: string;
+    github?: string;
+    live?: string;
+    src?: string;
+    tags?: string[];
+    type: 'github' | 'embed' | 'folder';
+    children?: Project[];
+};

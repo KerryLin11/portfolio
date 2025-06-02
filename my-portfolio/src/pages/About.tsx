@@ -2,6 +2,7 @@ import { FaUser } from 'react-icons/fa'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { handleClose } from '@/utils/audioUtils'
 
 type SectionProps = {
     onClose: () => void
@@ -10,12 +11,7 @@ type SectionProps = {
 const AboutSection = ({ onClose }: SectionProps) => {
     const [isTapping, setIsTapping] = useState(false)
 
-    const handleClose = () => {
-        const audio = new Audio('/sounds/close3.wav');
-        audio.volume = 0.5;
-        audio.play().catch((e) => console.error('SFX play failed', e));
-        onClose();
-    };
+
 
     return (
         <motion.div
@@ -26,7 +22,7 @@ const AboutSection = ({ onClose }: SectionProps) => {
 
 
             <Button
-                onClick={handleClose}
+                onClick={() => handleClose(onClose)}
                 variant="closeButton"
                 className="absolute -top-2 -right-2"
                 onMouseDown={() => setIsTapping(true)}

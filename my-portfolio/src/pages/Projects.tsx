@@ -3,40 +3,82 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from '@/components/mindmap buttons/ProjectCard';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-
-type Project = {
-    title: string;
-    description: string;
-    github?: string;
-    live?: string;
-    src?: string;
-    tags: string[];
-    type: 'github' | 'js' | 'unity';
-};
+import type { Project } from '@/components/mindmap buttons/Types';
+import { handleClose, playSound } from '@/utils/audioUtils';
 
 const projects: Project[] = [
     {
-        title: 'GitHub Project',
-        description: 'An open-source tool built with React and Tailwind.',
-        github: 'https://github.com/yourusername/project',
-        live: 'https://yourusername.github.io/project/',
-        tags: ['React', 'Tailwind'],
-        type: 'github',
-    },
-    {
-        title: 'JS Canvas Game',
+        title: 'Culinary Overture: Gourmet Sonata in F Major',
         description: 'A fun JavaScript game using Canvas API.',
         github: 'https://github.com/yourusername/js-canvas-game',
-        live: 'https://yourusername.github.io/js-canvas-game/',
-        tags: ['JavaScript', 'Canvas'],
-        type: 'js',
+        src: 'https://itch.io/embed-upload/13886309?color=333333',
+        tags: ['HTML', 'CSS', 'JavaScript'],
+        type: 'embed',
     },
     {
-        title: 'Vultur',
+        title: 'VULTUR',
         description: 'A small Unity game embedded using WebGL.',
-        src: '/unity/vultur/index.html',
-        tags: ['Unity', 'WebGL'],
-        type: 'unity',
+        src: 'https://itch.io/embed-upload/13883305?color=ffffff',
+        live: 'https://oberindraco.itch.io/project-vulture-alpha-build',
+        tags: ['Unity', 'C#'],
+        type: 'embed',
+    },
+    {
+        title: 'Block a Block',
+        description: 'A small Unity game embedded using WebGL.',
+        src: 'https://itch.io/embed-upload/',
+        live: 'https://oberindraco.itch.io/project-vulture-alpha-build',
+        github: 'https://github.com/yourusername/project',
+        tags: ['Unity', 'C#'],
+        type: 'embed',
+    },
+    {
+        title: 'Skyward Dive',
+        description: 'A small Unity game embedded using WebGL.',
+        src: 'https://itch.io/embed-upload/',
+        live: 'https://oberindraco.itch.io/project-vulture-alpha-build',
+        github: 'https://github.com/yourusername/project',
+        tags: ['Unity', 'C#'],
+        type: 'embed',
+    },
+    {
+        title: 'Miscellaneous Personal Projects',
+        description: 'Some things I\'ve worked on for myself.',
+        type: 'folder',
+        children: [
+            {
+                title: 'This Portfolio Site',
+                description: 'A portfolio site to show off my work',
+                github: 'https://github.com/yourusername/quick-timer',
+                tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+                type: 'github',
+                src: 'https://itch.io/embed-upload/quick-timer-id?color=333333',
+            },
+            {
+                title: 'My Everything List (2018 -> Present)',
+                description: 'Site where I rate everything I consume, from games to shows to books to movies',
+                github: 'https://github.com/yourusername/quick-timer',
+                tags: ['HTML', 'CSS', 'JavaScript'],
+                type: 'embed',
+                src: 'https://itch.io/embed-upload/quick-timer-id?color=333333',
+            },
+            {
+                title: 'Cube Algorithm Timer',
+                description: 'A timer specially made for cubing algorithms',
+                github: 'https://github.com/yourusername/css-playground',
+                tags: ['JavaScript', 'Chart.js', 'Google Sheets API', 'Google OAuth2'],
+                type: 'github',
+                live: 'https://oberindraco.itch.io/project-vulture-alpha-build',
+            },
+            {
+                title: 'Program Blocker for Windows',
+                description: 'A simple tkinter app to block user access to apps for an allotted time',
+                github: 'https://github.com/yourusername/quick-timer',
+                tags: ['Python', 'Tkinter'],
+                type: 'github',
+            },
+
+        ]
     },
 ];
 
@@ -46,24 +88,16 @@ type SectionProps = {
 
 const Projects = ({ onClose }: SectionProps) => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const [activeChildIndex, setActiveChildIndex] = useState<number | null>(null);
 
     const handleBack = () => {
-        playSound();
+        playSound('/sounds/close3.wav', 0.5);
         setActiveIndex(null)
     };
 
-
     const [isTapping, setIsTapping] = useState(false)
-    const handleClose = () => {
-        playSound();
-        onClose();
-    };
 
-    const playSound = () => {
-        const audio = new Audio('/sounds/close3.wav');
-        audio.volume = 0.5;
-        audio.play().catch((e) => console.error('SFX play failed', e));
-    };
+
 
     return (
         <motion.div
@@ -73,7 +107,7 @@ const Projects = ({ onClose }: SectionProps) => {
             className="max-w-5xl mx-auto px-5 py-8 pb-20 bg-white text-gray-800 rounded-xl shadow-md relative"
         >
             <Button
-                onClick={handleClose}
+                onClick={() => handleClose(onClose)}
                 variant="closeButton"
                 className="absolute -top-2 -right-2"
                 onMouseDown={() => setIsTapping(true)}
@@ -93,9 +127,15 @@ const Projects = ({ onClose }: SectionProps) => {
             </p>
 
             {/* Show Back button at top-right of container */}
-            {activeIndex !== null && (
+            {(activeChildIndex !== null || activeIndex !== null) && (
                 <Button
-                    onClick={handleBack}
+                    onClick={() => {
+                        if (activeChildIndex !== null) {
+                            setActiveChildIndex(null);
+                        } else {
+                            setActiveIndex(null);
+                        }
+                    }}
                     variant="closeButton"
                     className="absolute bottom-4 right-4 z-10"
                 >
@@ -103,9 +143,11 @@ const Projects = ({ onClose }: SectionProps) => {
                 </Button>
             )}
 
-            <div className="relative min-h-[300px] grid sm:grid-cols-2 gap-6">
+
+            <div className="relative min-h-[300px] grid sm:grid-cols-2 gap-4">
                 <AnimatePresence mode="wait">
-                    {activeIndex === null &&
+                    {/* Top-level projects */}
+                    {activeIndex === null && (
                         projects.map((project, index) => (
                             <motion.div
                                 key={project.title}
@@ -119,47 +161,80 @@ const Projects = ({ onClose }: SectionProps) => {
                             >
                                 <ProjectCard project={project} />
                             </motion.div>
-                        ))}
+                        ))
+                    )}
 
-                    {activeIndex !== null &&
-                        projects.map((project, index) => {
-                            if (index === activeIndex) {
-                                return (
-                                    <motion.div
-                                        key={`card-${index}`}
-                                        layoutId={`card-${index}`}
-                                        className="col-span-2"
-                                        transition={{ layout: { duration: 0.4, ease: 'easeInOut' } }}
-                                    >
-                                        <ProjectCard project={project} forceShowPlayer />
+                    {/* Top-level detail view */}
+                    {activeIndex !== null && activeChildIndex === null && (
+                        <motion.div
+                            key={`card-${activeIndex}`}
+                            layoutId={`card-${activeIndex}`}
+                            className="col-span-2"
+                            transition={{ layout: { duration: 0.4, ease: 'easeInOut' } }}
+                        >
+                            <ProjectCard project={projects[activeIndex]} forceShowPlayer />
 
+                            {Array.isArray(projects[activeIndex].children) ? (
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                                    {projects[activeIndex].children!.map((child, childIndex) => (
                                         <motion.div
-                                            key="details"
-                                            className="mt-6 bg-gray-100 border border-gray-200 p-6 rounded-xl shadow-sm"
+                                            key={`child-${childIndex}`}
+                                            layoutId={`child-${activeIndex}-${childIndex}`}
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0 }}
+                                            transition={{ duration: 0.25 }}
+                                            className="cursor-pointer"
+                                            onClick={() => setActiveChildIndex(childIndex)}
                                         >
-                                            <h4 className="text-lg font-semibold mb-2">More about this project</h4>
-                                            <p className="text-sm text-gray-700 leading-relaxed">
-                                                This is where you can show extra details, embed videos, screenshots, or explain your thought process and technical decisions behind the project.
-                                            </p>
+                                            <ProjectCard project={child} />
                                         </motion.div>
-                                    </motion.div>
-                                );
-                            } else {
-                                return (
-                                    <motion.div
-                                        key={`fade-${index}`}
-                                        initial={{ opacity: 1 }}
-                                        animate={{ opacity: 0 }}
-                                        exit={{ opacity: 0 }}
-                                        transition={{ duration: 0.25 }}
-                                    />
-                                );
-                            }
-                        })}
+                                    ))}
+                                </div>
+                            ) : (
+                                <motion.div
+                                    key="details"
+                                    className="mt-6 bg-gray-100 border border-gray-200 p-6 rounded-xl shadow-sm"
+                                >
+                                    <h4 className="text-lg font-semibold mb-2">More about this project</h4>
+                                    <p className="text-sm text-gray-700 leading-relaxed">
+                                        This is where you can show extra details, embed videos, screenshots, or explain your thought process and technical decisions behind the project.
+                                    </p>
+                                </motion.div>
+                            )}
+                        </motion.div>
+                    )}
+
+                    {/* Child detail view */}
+                    {activeIndex !== null && activeChildIndex !== null && (
+                        <motion.div
+                            key={`child-detail-${activeChildIndex}`}
+                            layoutId={`child-${activeIndex}-${activeChildIndex}`}
+                            className="col-span-2"
+                            transition={{ layout: { duration: 0.4, ease: 'easeInOut' } }}
+                        >
+                            <ProjectCard
+                                project={projects[activeIndex].children![activeChildIndex]}
+                                forceShowPlayer
+                            />
+
+                            <motion.div
+                                key="child-details"
+                                className="mt-6 bg-gray-100 border border-gray-200 p-6 rounded-xl shadow-sm"
+                            >
+                                <h4 className="text-lg font-semibold mb-2">More about this project</h4>
+                                <p className="text-sm text-gray-700 leading-relaxed">
+                                    Add extended details or embed content related to this specific subproject.
+                                </p>
+                            </motion.div>
+                        </motion.div>
+                    )}
                 </AnimatePresence>
+
             </div>
         </motion.div>
     );
+
 };
 
 

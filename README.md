@@ -18,6 +18,9 @@
 - Clean Reset: `rm -r -fo node_modules && npm install` deletes the node_modules folder and reinstalls it. (Useful for when files are corrupted)
 - <a> https://www.sunnypatel.net/#contact </a>
 - tree /f > treefile.txt
+- Components or data lists?
+  - Use components if it's about structure
+  - Use data lists if it's about content
 
 ## React Router Dom
 - React-router-dom `<Link>` binds urls to react components removing the need for `<a>` tags which requires page reloads
@@ -70,6 +73,7 @@
   - `onMouseLeave` → Mouse leaves element boundaries
   - `onTouchStart` → Finger touch screen
   - `onTouchEnd` → Finger no longer touch screen 🦍
+- 
 
 
 

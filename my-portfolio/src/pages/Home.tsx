@@ -3,7 +3,7 @@ import AboutSection from '../pages/About';
 import ProjectsSection from '../pages/Projects';
 import ContactSection from '../pages/Contact';
 import RenderNode from '@/components/mindmap buttons/RenderNode';
-import type { Node } from '@/components/mindmap buttons/Node';
+import type { Node } from '@/components/mindmap buttons/Types';
 import RelativeTo from '@/components/mindmap buttons/RelativeTo';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaUser } from 'react-icons/fa'

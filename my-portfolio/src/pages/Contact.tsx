@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { FaEnvelope, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { motion } from 'framer-motion'
+import { handleClose } from '@/utils/audioUtils';
 
 
 type SectionProps = {
@@ -12,13 +13,6 @@ type SectionProps = {
 const Contact = ({ onClose }: SectionProps) => {
     const [isTapping, setIsTapping] = useState(false)
 
-    const handleClose = () => {
-        const audio = new Audio('/sounds/close3.wav');
-        audio.volume = 0.5;
-        audio.play().catch((e) => console.error('SFX play failed', e));
-        onClose();
-    };
-
     return (
         <motion.div
             animate={{ scale: isTapping ? 0.98 : 1 }}
@@ -26,7 +20,7 @@ const Contact = ({ onClose }: SectionProps) => {
             className="max-w-sm mx-auto bg-white text-gray-800 p-6 rounded-xl shadow-md relative"
         >
             <Button
-                onClick={handleClose}
+                onClick={() => handleClose(onClose)}
                 variant="closeButton"
                 className="absolute -top-2 -right-2"
                 onMouseDown={() => setIsTapping(true)}

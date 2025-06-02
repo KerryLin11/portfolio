@@ -17,7 +17,7 @@ const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
 
     const animationRef = useRef<number | null>(null);
 
-    const ZOOM_OUT = .75;
+    const ZOOM_OUT = .5;
     const ZOOM_IN = 2;
 
     const handleMouseDown = (e: React.MouseEvent) => {

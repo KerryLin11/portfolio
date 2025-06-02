@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import RelativeTo from './RelativeTo';
 import Bubble from './Bubble';
-import type { Node } from './Node';
+import type { Node } from './Types';
 
 interface RenderNodeProps {
     node: Node;

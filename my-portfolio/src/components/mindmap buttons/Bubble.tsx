@@ -1,3 +1,4 @@
+import { playSoundRandom } from '@/utils/audioUtils';
 import { motion } from 'framer-motion';
 import React from 'react';
 
@@ -26,25 +27,15 @@ const Bubble = ({
     const defaultClickSound = '/sounds/click1.wav';
     const defaultHoverSound = '/sounds/hover1.wav';
 
-    const playSound = (src: string, initialVolume: number, volumeRange: number, initialPlaybackRate: number, playbackRateRange: number) => {
-        const audio = new Audio(src);
-        const clamp = (num: number, min: number, max: number) => Math.min(Math.max(num, min), max);
-        audio.volume = clamp(initialVolume + (Math.random() * 2 - 1) * volumeRange, 0, 1);
-        audio.playbackRate = clamp(initialPlaybackRate + (Math.random() * 2 - 1) * playbackRateRange, 0.1, 4);
-        audio.play().catch((e) => console.warn('Audio play error:', e));
-    };
-
-
-
     return (
         <div className="flex flex-col items-center gap-2" style={style}>
             <motion.div
                 onClick={() => {
-                    playSound(clickSound || defaultClickSound, 0.2, 0.05, 1, 0.1);
+                    playSoundRandom(clickSound || defaultClickSound, 0.2, 0.05, 1, 0.1);
                     onClick?.();
                 }}
                 onMouseEnter={() => {
-                    playSound(hoverSound || defaultHoverSound, 0.05, 0.02, 1, 0.1);
+                    playSoundRandom(hoverSound || defaultHoverSound, 0.05, 0.02, 1, 0.1);
                 }}
                 className={`w-24 h-24 flex items-center justify-center text-white ${color} rounded-full cursor-pointer shadow-md ${className}`}
                 whileHover={{ scale: 1.2, transition: { type: 'spring', stiffness: 300, damping: 10 } }}
