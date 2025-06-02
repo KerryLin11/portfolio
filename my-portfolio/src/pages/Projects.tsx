@@ -67,8 +67,8 @@ const projects: Project[] = [
                 description: 'A timer specially made for cubing algorithms',
                 github: 'https://github.com/yourusername/css-playground',
                 tags: ['JavaScript', 'Chart.js', 'Google Sheets API', 'Google OAuth2'],
-                type: 'github',
-                live: 'https://oberindraco.itch.io/project-vulture-alpha-build',
+                type: 'embedLarge',
+                // live: 'https://oberindraco.itch.io/project-vulture-alpha-build',
             },
             {
                 title: 'Program Blocker for Windows',

@@ -75,7 +75,7 @@ const ProjectCard = ({
                                     }`}
                                 allowFullScreen
                                 width={project.type === 'embedLarge' ? 800 : 980}
-                                height={project.type === 'embedLarge' ? 600 : 640}
+                                height={project.type === 'embedLarge' ? 800 : 640}
                             />
                         </div>
                     )}
