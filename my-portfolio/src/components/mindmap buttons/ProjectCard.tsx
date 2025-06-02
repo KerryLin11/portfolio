@@ -1,17 +1,24 @@
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaGithub, FaExternalLinkAlt, FaPlay } from 'react-icons/fa';
 
 type Project = {
     title: string;
     description: string;
     github?: string;
     live?: string;
-    unityUrl?: string;
+    src?: string;
     tags: string[];
     type: 'github' | 'js' | 'unity';
 };
 
-const ProjectCard = ({ project }: { project: Project }) => {
+const ProjectCard = ({
+    project,
+    forceShowPlayer = false,
+}: { project: Project, forceShowPlayer?: boolean }) => {
 
+    const [showPlayer, setShowPlayer] = useState(false);
+
+    const shouldShowPlayer = forceShowPlayer || showPlayer;
 
     return (
         <div className="bg-white rounded-xl shadow-md p-6 text-left text-gray-800">
@@ -29,15 +36,27 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 ))}
             </div>
 
-            {project.type === 'unity' && project.unityUrl ? (
-                <div className="w-full aspect-video mb-4">
-                    <iframe
-                        src={project.unityUrl}
-                        title={project.title}
-                        className="w-full h-full rounded-md border"
-                        allowFullScreen
-                    />
-                </div>
+            {project.type === 'unity' && project.src ? (
+                <>
+                    {!shouldShowPlayer ? (
+                        <button
+                            onClick={() => setShowPlayer(true)}
+                            className="w-full flex items-center justify-center gap-2 px-4 py-2 mb-4 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+                        >
+                            <FaPlay className="w-4 h-4" />
+                            Play in Browser
+                        </button>
+                    ) : (
+                        <div className="w-full aspect-video mb-4 mt-4">
+                            <iframe
+                                src={project.src}
+                                title={project.title}
+                                className="w-full h-full rounded-md border-2 px-2"
+                                allowFullScreen
+                            />
+                        </div>
+                    )}
+                </>
             ) : (
                 <div className="flex gap-3 text-sm">
                     {project.github && (

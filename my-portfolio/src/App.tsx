@@ -26,7 +26,7 @@ function App() {
           <AboutSection onClose={() => { }} />
         } />}
         {<Route path="/projects" element={
-          <ProjectsSection />
+          <ProjectsSection onClose={() => { }} />
         } />}
         {<Route path="/contact" element={
           <ContactSection onClose={() => { }} />

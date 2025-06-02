@@ -9,7 +9,7 @@ type Project = {
     description: string;
     github?: string;
     live?: string;
-    unityUrl?: string;
+    src?: string;
     tags: string[];
     type: 'github' | 'js' | 'unity';
 };
@@ -32,9 +32,9 @@ const projects: Project[] = [
         type: 'js',
     },
     {
-        title: 'Unity WebGL Demo',
+        title: 'Vultur',
         description: 'A small Unity game embedded using WebGL.',
-        unityUrl: 'https://hookmanuk.itch.io/creational-chaos',
+        src: '/unity/vultur/index.html',
         tags: ['Unity', 'WebGL'],
         type: 'unity',
     },
@@ -131,7 +131,7 @@ const Projects = ({ onClose }: SectionProps) => {
                                         className="col-span-2"
                                         transition={{ layout: { duration: 0.4, ease: 'easeInOut' } }}
                                     >
-                                        <ProjectCard project={project} />
+                                        <ProjectCard project={project} forceShowPlayer />
 
                                         <motion.div
                                             key="details"

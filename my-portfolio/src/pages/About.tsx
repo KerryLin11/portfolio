@@ -23,6 +23,8 @@ const AboutSection = ({ onClose }: SectionProps) => {
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             className="max-w-sm mx-auto bg-white text-gray-800 p-6 rounded-xl shadow-md relative"
         >
+
+
             <Button
                 onClick={handleClose}
                 variant="closeButton"
