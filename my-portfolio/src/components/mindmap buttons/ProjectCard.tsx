@@ -13,7 +13,7 @@ const ProjectCard = ({
     const shouldShowPlayer = forceShowPlayer || showPlayer;
 
     return (
-        <div className="bg-white rounded-xl shadow-md p-6 text-left text-gray-800">
+        <div className="bg-white rounded-xl shadow-md p-6 text-left text-gray-800 ">
             <h3 className="text-lg font-semibold mb-1">{project.title}</h3>
             <p className="text-sm text-gray-500 mb-3">{project.description}</p>
 
