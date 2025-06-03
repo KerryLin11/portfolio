@@ -20,4 +20,5 @@ export type Project = {
     tags?: string[];
     type: 'github' | 'embed' | 'embedLarge' | 'folder';
     children?: Project[];
+    details?: React.ReactNode;
 };

@@ -24,22 +24,59 @@ const projects: Project[] = [
         type: 'embed',
     },
     {
-        title: 'Block a Block',
+        title: 'Block the Block',
         description: 'A small Unity game embedded using WebGL.',
         src: 'https://itch.io/embed-upload/',
-        live: 'https://oberindraco.itch.io/project-vulture-alpha-build',
-        github: 'https://github.com/yourusername/project',
+        github: 'https://github.com/m0j0man1ac/ProjectBlockFreeze',
         tags: ['Unity', 'C#'],
         type: 'embed',
     },
     {
         title: 'Skyward Dive',
         description: 'A small Unity game embedded using WebGL.',
-        src: 'https://itch.io/embed-upload/',
-        live: 'https://oberindraco.itch.io/project-vulture-alpha-build',
-        github: 'https://github.com/yourusername/project',
-        tags: ['Unity', 'C#'],
-        type: 'embed',
+        src: 'https://itch.io/embed/3066729',
+        github: 'https://github.com/KerryLin11/Skyward-Dive',
+        tags: ['Unity VR', 'C#'],
+        type: 'github',
+        details: (
+            <>
+                <p className="mb-4">
+                    <strong>Skyward Dive</strong> is a Unity flying game with post-processing and WebGL support.
+                </p>
+
+                {/* Image and Itch.io embed side-by-side */}
+                <div className="flex flex-col md:flex-row md:items-start md:space-x-6 mb-6">
+                    <img
+                        src="SkywardDivePoster.png"
+                        alt="Skyward Dive Preview"
+                        className="rounded-xl shadow-md w-full md:w-1/3 mb-4 md:mb-0"
+                    />
+                    <a
+                        href="https://kerrylin4156.itch.io/skyward-dive"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block px-4 py-2 bg-rose-400 hover:bg-rose-500 text-white text-sm font-semibold rounded-md shadow-sm transition-colors duration-200"
+                    >
+                        Download on <span className="font-bold">Itch.io</span>
+                    </a>
+
+
+                </div>
+
+                {/* Trailer section */}
+                <p className="mt-2 mb-2 font-semibold">Here's a trailer:</p>
+                <div className="aspect-video w-full max-w-2xl mb-4">
+                    <iframe
+                        src="https://www.youtube.com/embed/IYsucAvipZs?si=LVg9G5sQeAgUHrqP"
+                        className="w-full h-full rounded-lg"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    ></iframe>
+                </div>
+            </>
+        )
+
     },
     {
         title: 'Miscellaneous Personal Projects',
@@ -61,6 +98,7 @@ const projects: Project[] = [
                 tags: ['JavaScript', 'Google Sheets API',],
                 type: 'embedLarge',
                 src: 'https://everything-list-2018.vercel.app/',
+                live: 'https://everything-list-2018.vercel.app/',
             },
             {
                 title: 'Cube Algorithm Timer',
@@ -68,12 +106,13 @@ const projects: Project[] = [
                 github: 'https://github.com/yourusername/css-playground',
                 tags: ['JavaScript', 'Chart.js', 'Google Sheets API', 'Google OAuth2'],
                 type: 'embedLarge',
-                // live: 'https://oberindraco.itch.io/project-vulture-alpha-build',
+                src: 'https://pll-timer-server.onrender.com/',
+                live: 'https://pll-timer-server.onrender.com/',
             },
             {
                 title: 'Program Blocker for Windows',
                 description: 'A simple tkinter app to block user access to apps for an allotted time',
-                github: 'https://github.com/yourusername/quick-timer',
+                github: 'https://github.com/KerryLin11/app-blocker',
                 tags: ['Python', 'Tkinter'],
                 type: 'github',
             },
@@ -195,7 +234,7 @@ const Projects = ({ onClose }: SectionProps) => {
                                 >
                                     <h4 className="text-lg font-semibold mb-2">More about this project</h4>
                                     <p className="text-sm text-gray-700 leading-relaxed">
-                                        This is where you can show extra details, embed videos, screenshots, or explain your thought process and technical decisions behind the project.
+                                        {projects[activeIndex].details}
                                     </p>
                                 </motion.div>
                             )}
@@ -221,7 +260,7 @@ const Projects = ({ onClose }: SectionProps) => {
                             >
                                 <h4 className="text-lg font-semibold mb-2">More about this project</h4>
                                 <p className="text-sm text-gray-700 leading-relaxed">
-                                    Add extended details or embed content related to this specific subproject.
+                                    {projects[activeIndex].children![activeChildIndex].details}
                                 </p>
                             </motion.div>
                         </motion.div>

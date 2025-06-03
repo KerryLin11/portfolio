@@ -39,7 +39,7 @@ const ProjectCard = ({
                             className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r  text-sm font-medium shadow-md hover:from-gray-100 hover:to-gray-200 transition-all duration-200 mb-4"
                         >
                             <FaExternalLinkAlt className="w-4 h-4" />
-                            Link to Store
+                            Link to Site
                         </a>
                     )}
 

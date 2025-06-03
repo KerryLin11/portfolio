@@ -6,21 +6,22 @@ import RenderNode from '@/components/mindmap buttons/RenderNode';
 import type { Node } from '@/components/mindmap buttons/Types';
 import RelativeTo from '@/components/mindmap buttons/RelativeTo';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaUser } from 'react-icons/fa'
+import { FaUser, FaBriefcase, FaEnvelope, FaHome } from 'react-icons/fa'
 
 
 
 const nodeData: Node[] = [
     {
         id: 'center',
-        icon: <FaUser></FaUser>,
-        label: 'Your Name',
+        icon: <FaHome size={24} />,
+        label: 'Kerry Lin',
         color: 'bg-blue-500',
         clickSound: '/sounds/click2.wav',
         position: { x: 0, y: 0 },
         children: [
             {
                 id: 'about',
+                icon: <FaUser size={24} />,
                 label: 'About',
                 color: 'bg-red-400',
                 position: { x: 0, y: -250 },
@@ -28,6 +29,7 @@ const nodeData: Node[] = [
             },
             {
                 id: 'projects',
+                icon: <FaBriefcase size={24} />,
                 label: 'Projects',
                 color: 'bg-green-500',
                 position: { x: -250, y: 100 },
@@ -35,6 +37,7 @@ const nodeData: Node[] = [
             },
             {
                 id: 'contact',
+                icon: <FaEnvelope size={24} />,
                 label: 'Contact',
                 color: 'bg-orange-500',
                 position: { x: 250, y: 100 },
@@ -43,6 +46,7 @@ const nodeData: Node[] = [
         ],
     },
 ];
+
 
 const Home = () => {
     const [activeSection, setActiveSection] = useState<string | null>(null);
