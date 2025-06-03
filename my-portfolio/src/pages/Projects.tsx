@@ -186,7 +186,7 @@ const projects: Project[] = [
                         </p>
 
                         <p className="mb-4">
-                            Whenever I beat a previous record, it replaces the old time automatically. These days, I mostly use it when I'm in a cubing mood as it doubles as a casual solve timer too. A small project, but one that's stuck around longer than expected.
+                            I use <code>twisty.js</code> to visualize scrambles and <code>Chart.js</code> for performance graphs. There's both a session line chart and rolling averages to track progress. Whenever I beat a previous record, it updates automatically. These days I just pull it up whenever I'm in a cubing mood as it doubles as a casual solve timer too.
                         </p>
                     </>
                 )

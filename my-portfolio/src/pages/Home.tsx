@@ -94,7 +94,7 @@ const Home = () => {
                 )}
 
                 {activeSection === 'projects' && sectionAnchor && (
-                    <RelativeTo anchor={sectionAnchor} offset={{ x: -500, y: 0 }}>
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: -600, y: 0 }}>
                         {() => (
                             <motion.div
                                 key="projects"
@@ -110,7 +110,7 @@ const Home = () => {
                 )}
 
                 {activeSection === 'contact' && sectionAnchor && (
-                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: 225 }}>
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: 50, y: -275 }}>
                         {() => (
                             <motion.div
                                 key="contact"

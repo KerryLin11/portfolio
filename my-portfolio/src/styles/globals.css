@@ -7,7 +7,7 @@ body,
     overflow: hidden;
     /* Make sure the body is not scrollable */
     -webkit-user-drag: none;
-    /* background-color: #ffffff; */
+    background-color: #ffffff;
 }
 
 /* html,
