@@ -49,11 +49,20 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-button: var(--button);
+  --color-bubble-1: var(--bubble-1);
+  --color-bubble-2: var(--bubble-2);
+  --color-bubble-3: var(--bubble-3);
+  --color-bubble-4: var(--bubble-4);
 }
 
 /* --radius: 0.625rem; */
 
 :root {
+  --bubble-1: #3b82f6;
+  --bubble-2: #f87171;
+  --bubble-3: #22c55e;
+  --bubble-4: #f97316;
+
   --radius: 0.625rem;
 
   --background: #fefcfb;
@@ -106,6 +115,15 @@
 }
 
 .dark {
+  --bubble-1: #3c7dd8;
+  /* clear blue dusk */
+  --bubble-2: #dc5c78;
+  /* rose mauve */
+  --bubble-3: #43c38c;
+  /* jade green */
+  --bubble-4: #ea8b45;
+  /* golden orange clay */
+
   --radius: 0.625rem;
 
   --background: #1b1e2b;
