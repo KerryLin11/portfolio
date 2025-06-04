@@ -75,8 +75,6 @@ const Home = () => {
                 onSelectSection={handleSelect}
                 isVisible={true}
             />
-            <ThemeToggle />
-
 
             <AnimatePresence>
                 {activeSection === 'about' && sectionAnchor && (
@@ -127,6 +125,10 @@ const Home = () => {
                     </RelativeTo>
                 )}
             </AnimatePresence>
+
+            <div className="fixed top-4 right-4 z-50">
+                <ThemeToggle />
+            </div>
         </div>
     );
 };

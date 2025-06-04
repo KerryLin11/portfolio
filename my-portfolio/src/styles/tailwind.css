@@ -93,7 +93,7 @@
   /* gentle red */
   --border: #e0dede;
 
-  --input: #c9c9c9;
+  --input: #dbdbdb;
   --ring: #b5c9ff;
 
   --chart-1: #c9e4de;
@@ -116,13 +116,9 @@
 
 .dark {
   --bubble-1: #3c7dd8;
-  /* clear blue dusk */
   --bubble-2: #dc5c78;
-  /* rose mauve */
   --bubble-3: #43c38c;
-  /* jade green */
   --bubble-4: #ea8b45;
-  /* golden orange clay */
 
   --radius: 0.625rem;
 

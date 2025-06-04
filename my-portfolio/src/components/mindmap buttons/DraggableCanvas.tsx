@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import BackgroundPattern from '../ui/BackgroundPattern';
+import ThemeToggle from './ThemeToggle';
 
 const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -141,6 +142,10 @@ const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
             className="w-screen h-screen overflow-hidden cursor-grab active:cursor-grabbing"
             style={{ touchAction: 'none' }}
         >
+            <div className="fixed top-4 right-4 z-50">
+                <ThemeToggle />
+            </div>
+
             {/* <BackgroundPattern /> */}
             <div
                 className="text-white duration-75 ease-out no-block"
