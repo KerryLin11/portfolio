@@ -77,7 +77,7 @@ const ProjectCard = ({
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium shadow-md mb-4"
                             style={{
-                                background: 'var(--input)',
+                                background: 'linear-gradient(135deg, var(--popover) 0%, var(--muted) 100%)',
                                 color: 'var(--foreground)',
                             }}
                             whileHover={{ scale: 1.15 }}
@@ -114,7 +114,7 @@ const ProjectCard = ({
                             className="w-full flex items-center justify-center gap-2 px-4 py-2 mb-4 text-sm rounded-md cursor-pointer"
                             style={{
                                 backgroundColor: 'var(--button)',
-                                color: 'var(--foreground)',
+                                color: '#ffffff',
                             }}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}

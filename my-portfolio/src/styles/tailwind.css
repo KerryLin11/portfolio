@@ -83,7 +83,7 @@
   /* blush peach */
   --secondary-foreground: #3d3a4b;
 
-  --muted: #f2f2f2;
+  --muted: #f1f1f1;
   --muted-foreground: #888888;
 
   --accent: #cddafd;
@@ -113,7 +113,7 @@
   --sidebar-border: #e0e0e0;
   --sidebar-ring: #d0d0ff;
 
-  --button: #3e82ff;
+  --button: #0049cf;
 }
 
 .dark {
