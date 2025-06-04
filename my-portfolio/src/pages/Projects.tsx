@@ -7,7 +7,7 @@ import type { Project } from '@/components/mindmap buttons/Types';
 import { handleClose, playSound } from '@/utils/audioUtils';
 import { useProjectContext } from '@/components/mindmap buttons/ProjectContext';
 
-const projects: Project[] = [
+export const projects: Project[] = [
     {
         title: 'VULTUR',
         description: 'An atmospheric mech FPS meets action RPG, where you disembody to customize your build and survive a haunting sci-fi world.',

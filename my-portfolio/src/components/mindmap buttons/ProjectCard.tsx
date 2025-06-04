@@ -27,13 +27,18 @@ const ProjectCard = ({
 
     return (
         <motion.div
-            whileHover={project.type === 'folder' && (activeChildIndex !== null || activeIndex !== null) ? { scale: 1.02 } : {}}
-            whileTap={project.type === 'folder' && (activeChildIndex !== null || activeIndex !== null) ? { scale: 0.98 } : {}}
+            whileHover={(activeChildIndex !== null || activeIndex !== null) ? { scale: 1.02 } : {}}
+            whileTap={(activeChildIndex !== null || activeIndex !== null) ? { scale: 0.98 } : {}}
             onClick={() => {
-                if (project.type === 'folder' && (activeChildIndex !== null || activeIndex !== null)) {
+                console.log(activeIndex);
+
+                if ((activeChildIndex !== null || activeIndex !== null) && project.type === 'folder') {
                     playSound('/sounds/close3.wav', 0.5);
                     setActiveChildIndex(null);
                     setActiveIndex(null);
+                } else {
+                    console.log('Opening project details');
+
                 }
             }}
             className="rounded-xl shadow-md p-6 text-left transition-transform"
