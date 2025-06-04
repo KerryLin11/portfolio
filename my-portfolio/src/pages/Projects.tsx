@@ -130,7 +130,7 @@ export const projects: Project[] = [
 
     {
         title: 'Miscellaneous Personal Projects',
-        description: 'Some things I\'ve worked on for myself.',
+        description: 'Some things I\'ve worked on for myself recently.',
         type: 'folder',
         children: [
             {

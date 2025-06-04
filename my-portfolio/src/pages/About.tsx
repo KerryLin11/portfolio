@@ -11,7 +11,7 @@ type SectionProps = {
 const AboutSection = ({ onClose }: SectionProps) => {
     const [isTapping, setIsTapping] = useState(false)
 
-
+    const coreSkills = ['Unity', 'C#', 'Java', 'JavaScript', 'Git']
 
     return (
         <motion.div
@@ -38,17 +38,16 @@ const AboutSection = ({ onClose }: SectionProps) => {
                 <FaUser className="w-5 h-5 mr-2" />
                 About Me
             </h2>
-            <p className="text-sm text-muted-foreground mb-4">Get to know me better</p>
+            <p className="text-sm text-muted-foreground mb-4">Overview</p>
 
             <p className="text-sm mb-4 text-muted-foreground">
-                I'm a passionate full-stack developer with 5+ years of experience creating digital solutions.
-                I love turning complex problems into simple, beautiful designs.
+                I'm a game development student at Macquarie University with 3 years of experience and one semester left before graduation. I have a diverse range of software skills, with a strong focus on building engaging interactive experiences.
             </p>
 
             <div className="mb-4">
-                <p className="font-semibold text-sm mb-2 text-primary">Skills</p>
+                <p className="font-semibold text-sm mb-2 text-primary">Core Technologies I Work With</p>
                 <div className="flex flex-wrap gap-2 text-sm">
-                    {['React', 'TypeScript', 'Next.js', 'Node.js', 'Python'].map(skill => (
+                    {coreSkills.map(skill => (
                         <span key={skill} className="bg-muted text-muted-foreground px-2 py-1 rounded-md">
                             {skill}
                         </span>
@@ -56,12 +55,6 @@ const AboutSection = ({ onClose }: SectionProps) => {
                 </div>
             </div>
 
-            <div>
-                <p className="font-semibold text-sm mb-2 text-primary">Interests</p>
-                <p className="text-sm text-muted-foreground">
-                    UI/UX Design, Machine Learning, Open Source, Photography
-                </p>
-            </div>
         </motion.div>
     )
 }

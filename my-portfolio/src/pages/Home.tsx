@@ -113,7 +113,7 @@ const Home = () => {
                 )}
 
                 {activeSection === 'contact' && sectionAnchor && (
-                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: -175 }}>
+                    <RelativeTo anchor={sectionAnchor} offset={{ x: 0, y: -185 }}>
                         {() => (
                             <motion.div
                                 key="contact"
