@@ -1,4 +1,4 @@
-import { FaUser } from 'react-icons/fa'
+import { FaUser, FaFilePdf } from 'react-icons/fa'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
@@ -38,7 +38,23 @@ const AboutSection = ({ onClose }: SectionProps) => {
                 <FaUser className="w-5 h-5 mr-2" />
                 About Me
             </h2>
-            <p className="text-sm text-muted-foreground mb-4">Overview</p>
+
+            <div className="flex gap-3 text-sm mb-4">
+                <motion.a
+                    href="https://docs.google.com/document/d/1lKEPQl7nWUacM-ZKY-j0NAxvY_ijle8O7mPAvnQrILY/export?format=pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 px-3 py-1 rounded-md "
+                    style={{
+                        backgroundColor: 'var(--input)',
+                        color: 'var(--foreground)',
+                    }}
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.85 }}
+                >
+                    <FaFilePdf className="w-4 h-4" /> Resume
+                </motion.a>
+            </div>
 
             <p className="text-sm mb-4 text-muted-foreground">
                 I'm a game development student at Macquarie University with 3 years of experience and one semester left before graduation. I have a diverse range of software skills, with a strong focus on building engaging interactive experiences.
