@@ -8,6 +8,7 @@ import RelativeTo from '@/components/mindmap buttons/RelativeTo';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaUser, FaBriefcase, FaEnvelope, FaHome } from 'react-icons/fa'
 import ThemeToggle from '@/components/mindmap buttons/ThemeToggle';
+import { ProjectProvider } from '@/components/mindmap buttons/ProjectContext';
 
 
 
@@ -103,7 +104,9 @@ const Home = () => {
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <ProjectsSection onClose={() => setActiveSection(null)} />
+                                <ProjectProvider>
+                                    <ProjectsSection onClose={() => setActiveSection(null)} />
+                                </ProjectProvider>
                             </motion.div>
                         )}
                     </RelativeTo>

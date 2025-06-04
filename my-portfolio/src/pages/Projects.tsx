@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import type { Project } from '@/components/mindmap buttons/Types';
 import { handleClose, playSound } from '@/utils/audioUtils';
+import { useProjectContext } from '@/components/mindmap buttons/ProjectContext';
 
 const projects: Project[] = [
     {
@@ -216,8 +217,12 @@ type SectionProps = {
 };
 
 const Projects = ({ onClose }: SectionProps) => {
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
-    const [activeChildIndex, setActiveChildIndex] = useState<number | null>(null);
+    const {
+        activeIndex,
+        setActiveIndex,
+        activeChildIndex,
+        setActiveChildIndex
+    } = useProjectContext();
 
     const [isTapping, setIsTapping] = useState(false)
 
@@ -228,7 +233,7 @@ const Projects = ({ onClose }: SectionProps) => {
             animate={{ scale: isTapping ? 0.98 : 1 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             layout
-            className="max-w-5xl mx-auto px-5 py-8 pb-20 bg-card text-card-foreground rounded-xl shadow-md relative"
+            className="max-w-5xl mx-auto px-5 py-8 pb-20 bg-card text-card-foreground rounded-xl shadow-md relative no-block"
         >
             <Button
                 onClick={() => handleClose(onClose)}

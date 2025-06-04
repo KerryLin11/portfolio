@@ -1,7 +1,11 @@
 import { useState } from 'react';
-import { FaGithub, FaExternalLinkAlt, FaPlay } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaPlay, FaArrowLeft } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import type { Project } from './Types';
+import { playSound } from '@/utils/audioUtils';
+
+import { useProjectContext } from '@/components/mindmap buttons/ProjectContext';
+
 
 const ProjectCard = ({
     project,
@@ -11,14 +15,35 @@ const ProjectCard = ({
     const [showPlayer, setShowPlayer] = useState(false);
     const shouldShowPlayer = forceShowPlayer || showPlayer;
 
+    const { setActiveIndex, setActiveChildIndex, activeIndex, activeChildIndex } = useProjectContext();
+
+    const handleFolderClick = () => {
+        playSound('/sounds/close3.wav', 0.5);
+
+        setActiveChildIndex(null);
+        setActiveIndex(null);
+    };
+
+
     return (
         <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={project.type === 'folder' && (activeChildIndex !== null || activeIndex !== null) ? { scale: 1.02 } : {}}
+            whileTap={project.type === 'folder' && (activeChildIndex !== null || activeIndex !== null) ? { scale: 0.98 } : {}}
+            onClick={() => {
+                if (project.type === 'folder' && (activeChildIndex !== null || activeIndex !== null)) {
+                    playSound('/sounds/close3.wav', 0.5);
+                    setActiveChildIndex(null);
+                    setActiveIndex(null);
+                }
+            }}
             className="rounded-xl shadow-md p-6 text-left transition-transform"
             style={{
                 backgroundColor: 'var(--muted)',
                 color: 'var(--card-foreground)',
+                cursor:
+                    project.type === 'folder' && (activeChildIndex !== null || activeIndex !== null)
+                        ? 'pointer'
+                        : 'default',
             }}
         >
             <h3 className="text-lg font-semibold mb-1">{project.title}</h3>
@@ -86,7 +111,7 @@ const ProjectCard = ({
                     {!shouldShowPlayer ? (
                         <motion.button
                             onClick={() => setShowPlayer(true)}
-                            className="w-full flex items-center justify-center gap-2 px-4 py-2 mb-4 text-sm rounded-md"
+                            className="w-full flex items-center justify-center gap-2 px-4 py-2 mb-4 text-sm rounded-md cursor-pointer"
                             style={{
                                 backgroundColor: 'var(--button)',
                                 color: 'var(--foreground)',
@@ -148,6 +173,21 @@ const ProjectCard = ({
                             Live Demo
                         </motion.a>
                     )}
+                    {project.type === 'folder' && (activeChildIndex !== null || activeIndex !== null) && (
+                        <div
+                            onClick={handleFolderClick}
+                            className="p-2 rounded-md border border-[color:var(--input)] bg-[color:var(--muted)] text-[color:var(--foreground)] hover:shadow-md"
+                            style={{
+                                cursor: 'pointer',
+                            }}
+                        >
+                            <FaArrowLeft className="w-4 h-4" />
+                        </div>
+                    )}
+
+
+
+
                 </div>
             )}
         </motion.div>
