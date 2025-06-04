@@ -10,6 +10,29 @@ const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
         y: window.innerHeight / 2,
     });
 
+    // const initialX = 680;
+    // const initialY = 450;
+
+    const initialX = window.innerWidth / 2;
+    const initialY = window.innerHeight / 2;
+    const MAX_OFFSET = 300;
+
+
+
+    function clampToBounds(newX: number, newY: number, scale: number) {
+        const dx = (newX - initialX) / scale;
+        const dy = (newY - initialY) / scale;
+
+        const clampedDx = Math.min(MAX_OFFSET, Math.max(-MAX_OFFSET, dx));
+        const clampedDy = Math.min(MAX_OFFSET, Math.max(-MAX_OFFSET, dy));
+
+        return {
+            x: initialX + clampedDx * scale,
+            y: initialY + clampedDy * scale,
+        };
+    }
+
+
     const [scale, setScale] = useState(1);
     const [isDragging, setIsDragging] = useState(false);
     const dragStart = useRef({ x: 0, y: 0 });
@@ -56,10 +79,10 @@ const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
         const dx = e.clientX - lastMouse.current.x;
         const dy = e.clientY - lastMouse.current.y;
 
-        setPosition({
-            x: e.clientX - dragStart.current.x,
-            y: e.clientY - dragStart.current.y,
-        });
+        const newX = e.clientX - dragStart.current.x;
+        const newY = e.clientY - dragStart.current.y;
+
+        setPosition(clampToBounds(newX, newY, scale));
 
         const velocityScale = 0.2;
 
@@ -80,10 +103,8 @@ const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
             velocity.current.x *= decay;
             velocity.current.y *= decay;
 
-            setPosition((prev) => ({
-                x: prev.x + velocity.current.x * 16,
-                y: prev.y + velocity.current.y * 16,
-            }));
+            setPosition(prev => clampToBounds(prev.x + velocity.current.x * 16, prev.y + velocity.current.y * 16, scale));
+
 
             if (Math.abs(velocity.current.x) > 0.01 || Math.abs(velocity.current.y) > 0.01) {
                 animationRef.current = requestAnimationFrame(animate);
@@ -116,12 +137,12 @@ const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
             const newPosY = mouseY - canvasY * newScale;
 
             setScale(newScale);
-            setPosition({ x: newPosX, y: newPosY });
+            const boundedNewPos = clampToBounds(newPosX, newPosY, newScale);
+            setPosition(boundedNewPos);
+
         } else {
-            setPosition((prev) => ({
-                x: prev.x - e.deltaX,
-                y: prev.y - e.deltaY,
-            }));
+            setPosition(prev => clampToBounds(prev.x - e.deltaX, prev.y - e.deltaY, scale));
+
         }
     };
 
