@@ -39,15 +39,17 @@ const Contact = ({ onClose }: SectionProps) => {
             <div className="mb-4 space-y-2 text-sm">
                 <p className="flex items-center">
                     <FaEnvelope className="w-4 h-4 mr-2" />
-                    hello@example.com
+                    masterkerry@gmail.com
                 </p>
                 <p className="flex items-center">
                     <FaPhone className="w-4 h-4 mr-2" />
-                    +1 (555) 123-4567
+                    0466 642 620
                 </p>
             </div>
 
-            <div className="mb-4">
+
+            {/* //! Social links */}
+            {/* <div className="mb-4">
                 <p className="font-semibold mb-2 text-sm">Social Links</p>
                 <div className="flex gap-2">
                     <a
@@ -65,10 +67,10 @@ const Contact = ({ onClose }: SectionProps) => {
                         LinkedIn
                     </a>
                 </div>
-            </div>
+            </div> */}
 
             <p className="text-xs text-muted-foreground">
-                Feel free to reach out for collaborations, opportunities, or just to say hello!
+                I'm always up for a chat or a coffee! Feel free to reach out.
             </p>
         </motion.div >
     );
