@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 const ThemeToggle = () => {
     const [isDark, setIsDark] = useState(false)
@@ -20,12 +21,14 @@ const ThemeToggle = () => {
     }
 
     return (
-        <button
+        <motion.button
             onClick={toggleTheme}
             className="p-2 rounded-md bg-muted text-muted-foreground"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
         >
             {isDark ? '🌙 Dark' : '☀️ Light'}
-        </button>
+        </motion.button>
     )
 }
 

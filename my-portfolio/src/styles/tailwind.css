@@ -32,6 +32,7 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
+  --color-destructive-hover: var(--destructive-hover);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -90,6 +91,7 @@
   --accent-foreground: #1e2a38;
 
   --destructive: #ff6464;
+  --destructive-hover: #ff9b9b;
   /* gentle red */
   --border: #e0dede;
 
@@ -149,6 +151,7 @@
   --accent-foreground: #1e2a38;
 
   --destructive: #fd6a6a;
+  --destructive-hover: #ff9b9b;
   --border: #44475a;
 
   --input: #2a2e40;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaGithub, FaExternalLinkAlt, FaPlay } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import type { Project } from './Types';
 
 const ProjectCard = ({
@@ -11,8 +12,10 @@ const ProjectCard = ({
     const shouldShowPlayer = forceShowPlayer || showPlayer;
 
     return (
-        <div
-            className="rounded-xl shadow-md p-6 text-left"
+        <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="rounded-xl shadow-md p-6 text-left transition-transform"
             style={{
                 backgroundColor: 'var(--muted)',
                 color: 'var(--card-foreground)',
@@ -43,51 +46,57 @@ const ProjectCard = ({
             {project.type === 'embed' || (project.type === 'embedLarge' && project.src) ? (
                 <>
                     {project.live && (
-                        <a
+                        <motion.a
                             href={project.live}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium shadow-md transition-all duration-200 mb-4 hover:scale-105 hover:shadow-lg"
+                            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium shadow-md mb-4"
                             style={{
                                 background: 'var(--input)',
                                 color: 'var(--foreground)',
                             }}
+                            whileHover={{ scale: 1.15 }}
+                            whileTap={{ scale: 0.85 }}
                         >
                             <FaExternalLinkAlt className="w-4 h-4" />
                             Link to Site
-                        </a>
+                        </motion.a>
                     )}
 
                     <div className="flex gap-3 text-sm mb-4">
                         {project.github && (
-                            <a
+                            <motion.a
                                 href={project.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-1 px-3 py-1 rounded-md transition-all"
+                                className="flex items-center gap-1 px-3 py-1 rounded-md "
                                 style={{
                                     backgroundColor: 'var(--input)',
                                     color: 'var(--foreground)',
                                 }}
+                                whileHover={{ scale: 1.15 }}
+                                whileTap={{ scale: 0.85 }}
                             >
                                 <FaGithub className="w-4 h-4" />
                                 GitHub
-                            </a>
+                            </motion.a>
                         )}
                     </div>
 
                     {!shouldShowPlayer ? (
-                        <button
+                        <motion.button
                             onClick={() => setShowPlayer(true)}
-                            className="w-full flex items-center justify-center gap-2 px-4 py-2 mb-4 text-sm rounded-md transition"
+                            className="w-full flex items-center justify-center gap-2 px-4 py-2 mb-4 text-sm rounded-md"
                             style={{
                                 backgroundColor: 'var(--button)',
                                 color: 'var(--foreground)',
                             }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                         >
                             <FaPlay className="w-4 h-4" />
                             View in Browser
-                        </button>
+                        </motion.button>
                     ) : (
                         <div className="w-full aspect-video mb-4 mt-4">
                             <iframe
@@ -105,39 +114,43 @@ const ProjectCard = ({
             ) : (
                 <div className="flex gap-3 text-sm">
                     {project.github && (
-                        <a
+                        <motion.a
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-1 px-3 py-1 rounded-md transition-all"
+                            className="flex items-center gap-1 px-3 py-1 rounded-md"
                             style={{
                                 backgroundColor: 'var(--input)',
                                 color: 'var(--foreground)',
                             }}
+                            whileHover={{ scale: 1.15 }}
+                            whileTap={{ scale: 0.85 }}
                         >
                             <FaGithub className="w-4 h-4" />
                             GitHub
-                        </a>
+                        </motion.a>
                     )}
 
                     {project.live && (
-                        <a
+                        <motion.a
                             href={project.live}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium shadow-md transition-all duration-200 mb-4"
+                            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium shadow-md mb-4"
                             style={{
-                                background: 'linear-gradient(to right, var(--muted), var(--muted-foreground))',
+                                background: 'var(--input)',
                                 color: 'var(--foreground)',
                             }}
+                            whileHover={{ scale: 1.15 }}
+                            whileTap={{ scale: 0.85 }}
                         >
                             <FaExternalLinkAlt className="w-4 h-4" />
                             Live Demo
-                        </a>
+                        </motion.a>
                     )}
                 </div>
             )}
-        </div>
+        </motion.div>
     );
 };
 
