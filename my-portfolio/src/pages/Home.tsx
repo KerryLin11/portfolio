@@ -7,6 +7,7 @@ import type { Node } from '@/components/mindmap buttons/Types';
 import RelativeTo from '@/components/mindmap buttons/RelativeTo';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaUser, FaBriefcase, FaEnvelope, FaHome } from 'react-icons/fa'
+import ThemeToggle from '@/components/mindmap buttons/ThemeToggle';
 
 
 
@@ -74,6 +75,7 @@ const Home = () => {
                 onSelectSection={handleSelect}
                 isVisible={true}
             />
+            <ThemeToggle />
 
 
             <AnimatePresence>

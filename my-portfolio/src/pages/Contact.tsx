@@ -17,7 +17,7 @@ const Contact = ({ onClose }: SectionProps) => {
         <motion.div
             animate={{ scale: isTapping ? 0.98 : 1 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            className="max-w-sm mx-auto bg-white text-gray-800 p-6 rounded-xl shadow-md relative"
+            className="max-w-sm mx-auto bg-card text-card-foreground p-6 rounded-xl shadow-md relative"
         >
             <Button
                 onClick={() => handleClose(onClose)}
@@ -34,7 +34,7 @@ const Contact = ({ onClose }: SectionProps) => {
                 <FaEnvelope className="w-5 h-5 mr-2" />
                 Contact Me
             </h2>
-            <p className="text-sm text-gray-500 mb-4">Let's get in touch</p>
+            <p className="text-sm text-muted-foreground mb-4">Let's get in touch</p>
 
             <div className="mb-4 space-y-2 text-sm">
                 <p className="flex items-center">
@@ -52,14 +52,14 @@ const Contact = ({ onClose }: SectionProps) => {
                 <div className="flex gap-2">
                     <a
                         href="#"
-                        className="flex items-center gap-1 px-3 py-1 bg-gray-100 rounded-md hover:bg-gray-200 text-sm"
+                        className="flex items-center gap-1 px-3 py-1 bg-muted rounded-md hover:bg-muted-foreground text-sm"
                     >
                         <FaGithub className="w-4 h-4" />
                         GitHub
                     </a>
                     <a
                         href="#"
-                        className="flex items-center gap-1 px-3 py-1 bg-gray-100 rounded-md hover:bg-gray-200 text-sm"
+                        className="flex items-center gap-1 px-3 py-1 bg-muted rounded-md hover:bg-muted-foreground text-sm"
                     >
                         <FaLinkedin className="w-4 h-4" />
                         LinkedIn
@@ -67,7 +67,7 @@ const Contact = ({ onClose }: SectionProps) => {
                 </div>
             </div>
 
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-muted-foreground">
                 Feel free to reach out for collaborations, opportunities, or just to say hello!
             </p>
         </motion.div >

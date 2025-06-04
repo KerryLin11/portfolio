@@ -228,7 +228,7 @@ const Projects = ({ onClose }: SectionProps) => {
             animate={{ scale: isTapping ? 0.98 : 1 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             layout
-            className="max-w-5xl mx-auto px-5 py-8 pb-20 bg-white text-gray-800 rounded-xl shadow-md relative"
+            className="max-w-5xl mx-auto px-5 py-8 pb-20 bg-card text-card-foreground rounded-xl shadow-md relative"
         >
             <Button
                 onClick={() => handleClose(onClose)}
@@ -242,11 +242,11 @@ const Projects = ({ onClose }: SectionProps) => {
                 &times;
             </Button>
 
-            <h2 className="text-xl font-semibold mb-2 flex items-center text-gray-800">
+            <h2 className="text-xl font-semibold mb-2 flex items-center text-primary">
                 <FaGithub className="w-5 h-5 mr-2" />
                 Projects
             </h2>
-            <p className="text-sm text-gray-500 mb-6">
+            <p className="text-sm text-muted-foreground mb-6">
                 A collection of games, tools, and web projects—some built for showcases, others just because I felt like it.
             </p>
 
@@ -320,10 +320,10 @@ const Projects = ({ onClose }: SectionProps) => {
                             ) : (
                                 <motion.div
                                     key="details"
-                                    className="mt-6 bg-gray-100 border border-gray-200 p-6 rounded-xl shadow-sm "
+                                    className="mt-6 bg-muted border border-border p-6 rounded-xl shadow-sm text-muted-foreground"
                                 >
-                                    <h4 className="text-lg font-semibold mb-2">More about this project</h4>
-                                    <p className="text-sm text-gray-700 leading-relaxed">
+                                    <h4 className="text-lg font-semibold mb-2 text-foreground">More about this project</h4>
+                                    <p className="text-sm leading-relaxed">
                                         {projects[activeIndex].details}
                                     </p>
                                 </motion.div>
@@ -346,10 +346,10 @@ const Projects = ({ onClose }: SectionProps) => {
 
                             <motion.div
                                 key="child-details"
-                                className="mt-6 bg-gray-100 border border-gray-200 p-6 rounded-xl shadow-sm"
+                                className="mt-6 bg-muted border border-border p-6 rounded-xl shadow-sm text-muted-foreground"
                             >
-                                <h4 className="text-lg font-semibold mb-2">More about this project</h4>
-                                <p className="text-sm text-gray-700 leading-relaxed">
+                                <h4 className="text-lg font-semibold mb-2 text-foreground">More about this project</h4>
+                                <p className="text-sm leading-relaxed">
                                     {projects[activeIndex].children![activeChildIndex].details}
                                 </p>
                             </motion.div>
