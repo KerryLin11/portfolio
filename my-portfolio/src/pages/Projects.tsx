@@ -4,7 +4,7 @@ import ProjectCard from '@/components/mindmap buttons/ProjectCard';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import type { Project } from '@/components/mindmap buttons/Types';
-import { handleClose, playSound } from '@/utils/audioUtils';
+import { handleClose, playSound, playSoundRandom } from '@/utils/audioUtils';
 import { useProjectContext } from '@/components/mindmap buttons/ProjectContext';
 
 export const projects: Project[] = [

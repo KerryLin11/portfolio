@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FaGithub, FaExternalLinkAlt, FaPlay, FaArrowLeft } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import type { Project } from './Types';
-import { playSound } from '@/utils/audioUtils';
+import { playSound, playSoundRandom } from '@/utils/audioUtils';
 
 import { useProjectContext } from '@/components/mindmap buttons/ProjectContext';
 
@@ -17,28 +17,18 @@ const ProjectCard = ({
 
     const { setActiveIndex, setActiveChildIndex, activeIndex, activeChildIndex } = useProjectContext();
 
-    const handleFolderClick = () => {
-        playSound('/sounds/close3.wav', 0.5);
-
-        setActiveChildIndex(null);
-        setActiveIndex(null);
-    };
 
 
     return (
         <motion.div
-            whileHover={(activeChildIndex !== null || activeIndex !== null) ? { scale: 1.02 } : {}}
-            whileTap={(activeChildIndex !== null || activeIndex !== null) ? { scale: 0.98 } : {}}
+            whileHover={{ scale: 1.02 }}
             onClick={() => {
-                console.log(activeIndex);
-
                 if ((activeChildIndex !== null || activeIndex !== null) && project.type === 'folder') {
                     playSound('/sounds/close3.wav', 0.5);
                     setActiveChildIndex(null);
                     setActiveIndex(null);
                 } else {
-                    console.log('Opening project details');
-
+                    playSoundRandom('/sounds/click_project1.wav', 0.5, 0.05, 1, 0.1);
                 }
             }}
             className="rounded-xl shadow-md p-6 text-left transition-transform"
@@ -180,11 +170,7 @@ const ProjectCard = ({
                     )}
                     {project.type === 'folder' && (activeChildIndex !== null || activeIndex !== null) && (
                         <div
-                            onClick={handleFolderClick}
-                            className="p-2 rounded-md border border-[color:var(--input)] bg-[color:var(--muted)] text-[color:var(--foreground)] hover:shadow-md"
-                            style={{
-                                cursor: 'pointer',
-                            }}
+                            className="p-2 rounded-md border border-[color:var(--input)] bg-[color:var(--muted)] text-[color:var(--foreground)]"
                         >
                             <FaArrowLeft className="w-4 h-4" />
                         </div>
