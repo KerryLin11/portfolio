@@ -15,7 +15,7 @@ const DraggableCanvas = ({ children }: { children: React.ReactNode }) => {
 
     const initialX = window.innerWidth / 2;
     const initialY = window.innerHeight / 2;
-    const MAX_OFFSET = 300;
+    const MAX_OFFSET = 1000;
 
 
 

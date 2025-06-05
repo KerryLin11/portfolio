@@ -64,7 +64,7 @@ export const projects: Project[] = [
 
                 {/* Research & showcase video */}
                 <p className="mt-10 mb-2 font-semibold ">
-                    Full research breakdown & gameplay showcase:
+                    Summarized research breakdown & gameplay showcase:
                 </p>
                 <div className="aspect-video w-full max-w-2xl mb-4">
                     <iframe
@@ -137,7 +137,7 @@ export const projects: Project[] = [
                 title: 'This Portfolio Site',
                 description: 'A portfolio site to show off my work',
                 github: 'https://github.com/KerryLin11/portfolio',
-                tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+                tags: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
                 type: 'github',
                 details: (
                     <>
@@ -204,6 +204,7 @@ export const projects: Project[] = [
                         <p className="mb-4">
                             Sometimes, you just need a little external discipline. A quick utility I made to keep myself focused when willpower alone wasn't quite cutting it.
                         </p>
+                        <img className="border-2 rounded-md" src="https://private-user-images.githubusercontent.com/84896346/450936937-254fa5f0-2ef9-4c3d-aa2c-f6454cd90b81.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDkxMzUwMzAsIm5iZiI6MTc0OTEzNDczMCwicGF0aCI6Ii84NDg5NjM0Ni80NTA5MzY5MzctMjU0ZmE1ZjAtMmVmOS00YzNkLWFhMmMtZjY0NTRjZDkwYjgxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA2MDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNjA1VDE0NDUzMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWVlNjVlNTY0ZDAwNGE0NTdhMTZjN2RmMjE2NDI5MGY4NWFkN2Q1NmFhNzE1YTQ0MTBmZTAwMjg4OTg5OTY1YTkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.B9I863pA4NgN2CpEPw_L8Ehho6XfJ_AIE5rce9epBmg" />
                     </>
                 )
 
