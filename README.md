@@ -1,6 +1,6 @@
 # Learning Outcomes
 
-## Technologies I'm want to learn
+## Technologies I want to learn
 - **React**: Component-based JS framework
 - **Vite**: Modern frontend server
 - **Tailwind CSS & shadcn**: Utility CSS for UI
@@ -16,10 +16,72 @@
 - `npm run preview` previews the build
 - `npm run dev` runs the dev server
 - Clean Reset: `rm -r -fo node_modules && npm install` deletes the node_modules folder and reinstalls it. (Useful for when files are corrupted)
-- `tree /f > treefile.txt` for viewing directory structure 
 - Components or data lists?
   - Use components if it's about structure
   - Use data lists if it's about content
+
+## Terminal
+CMD = Simple, plain-text output shell -> good for basic commands
+PowerShell = Modern, object-based shell -> more powerful, scriptable, and designed for automation.
+Terminal = A host/container for shells like CMD, PowerShell, WSL, etc. -> lets you run multiple shells in tabs with customization.
+
+### Commands
+- `start filename.txt` opens the file
+- `cd DirectoryName`: Change current directory to the specified folder.
+- `cd .\\`: Change directory to the current folder (effectively does nothing but refresh).
+- `mkdir`: Create a new directory (folder) with the given name.
+- `rmdir`: Remove an empty directory (fails if directory contains files or subfolders).
+- `cls` or `clear`: Clear the terminal screen (`cls` for Windows CMD/PowerShell, `clear` for Linux/macOS).
+- `tasklist`: List all running processes/tasks on the system.
+- `tasklist | findstr [name]`: Filter running tasks to show only those matching the given name.
+- `taskkill /IM [name] /F`: Forcefully terminate all processes matching the image name (`/IM` = image name, `/F` = force).
+- `ls` or `dir`: List files and directories in the current folder (`ls` on Linux/macOS, `dir` on Windows).
+- `rm [name]`: Remove/delete a file or directory (on Unix-like systems, deletes only files or empty directories).
+- `rm -r [name]`: Recursively delete a directory and all of its contents (files and subdirectories).
+- `tree /f > treefile.txt` for viewing directory structure 
+
+
+- `systeminfo`: Display detailed system information (Windows).
+- `ipconfig`: Display network configuration and IP address info (Windows).
+
+### Git Commands
+- `git init`: Initialize git repo.
+- `git status`: 
+  - untracked: Not being tracked by Git
+  - staged: Included in next commit
+  - committed: committed
+  - Commit objects use the SHA-1 Hash function (Secure Hash Algorithm)
+    - Takes any length string -> outputs 160-bit value
+
+
+- `git add .`: Add all changes in the current directory to the staging area.
+- `git commit -m "Your commit message"`: Commit the changes with a message.
+  - `-m`: message
+- `git push origin main`: Push the committed changes to the 'main' branch on the 'origin' remote repository.
+- `git log`: View commit history
+- `git pull origin main`: Pull the latest changes from the 'main' branch on the 'origin' remote repository.
+- `git cat-file -p <SHA-1 hash>`: View content of object (blob or tree)
+  - `-p`: pretty print
+### Git Notes
+- tree: git's way of storing a directory
+- blob: git's way of storing a file
+
+
+### Shortcuts
+
+- `Ctrl+C`: Interrupt or cancel the current running command/process in the terminal.
+- `Alt+Shift+=` open new pane to RIGHT
+- `Alt+Shift+-` open new pane to DOWN
+- `Shift+Ctrl+W` close current Pane
+- `Tab`: Auto-complete forward
+- `Shift+Tab`: Auto-complete backward
+- `Up`: Previous executed command
+- `Down`: Next executed command
+
+
+
+
+
 
 ## React Router Dom
 - React-router-dom `<Link>` binds urls to react components removing the need for `<a>` tags which requires page reloads
