@@ -83,7 +83,7 @@ export const projects: Project[] = [
         title: 'Culinary Overture: Gourmet Sonata in F Major',
         description: 'A 30 minute satirical, JavaScript-based visual novel starring an outrageously flamboyant food critic navigating culinary absurdities.',
         github: 'https://github.com/KerryLin11/Culinary-Overture-Gourmet-Sonata-in-F-Major',
-        src: 'https://itch.io/embed-upload/13886309?color=333333',
+        src: 'https://culinary-overture-gourmet-sonata-in.vercel.app/',
         tags: ['HTML', 'CSS', 'JavaScript'],
         type: 'embed',
         details: (

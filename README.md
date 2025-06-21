@@ -44,7 +44,7 @@ Terminal = A host/container for shells like CMD, PowerShell, WSL, etc. -> lets y
 - `systeminfo`: Display detailed system information (Windows).
 - `ipconfig`: Display network configuration and IP address info (Windows).
 
-### Git Commands
+### Git Commands (Actually Useful)
 - `git init`: Initialize git repo.
 - `git status`: 
   - untracked: Not being tracked by Git
@@ -52,6 +52,7 @@ Terminal = A host/container for shells like CMD, PowerShell, WSL, etc. -> lets y
   - committed: committed
   - Commit objects use the SHA-1 Hash function (Secure Hash Algorithm)
     - Takes any length string -> outputs 160-bit value
+- `-h` after a command for help.
 
 
 - `git add .`: Add all changes in the current directory to the staging area.
@@ -59,13 +60,80 @@ Terminal = A host/container for shells like CMD, PowerShell, WSL, etc. -> lets y
   - `-m`: message
 - `git push origin main`: Push the committed changes to the 'main' branch on the 'origin' remote repository.
 - `git log`: View commit history
+  - `git log --oneline`: 1 line per commit
+  - `git log --decorate=full` Shows all refs and tags
+  - `git log -3` Shows last 3 commits
+
 - `git pull origin main`: Pull the latest changes from the 'main' branch on the 'origin' remote repository.
 - `git cat-file -p <SHA-1 hash>`: View content of object (blob or tree)
   - `-p`: pretty print
+- `git branch` Shows all branches and current branch
+  - `git branch -m oldname newname` Rename branch
+- `git switch <branch name>` Switch to branch <branch name>
+- `git checkout <branch name>` basically git switch but supports file-level changes
+- `git rebase <branch name>` Rebase current branch onto <branch name>
+  - `git rebase --continue` Continue rebase
+  - `git rebase --abort` Abort rebase
+- `git merge <branch name>` Merge <branch name> into current branch
+  - `git merge --abort` Abort merge
+- `git reset --soft <commit hash>`: Move the branch pointer commit hash
+- `git reset --soft HEAD~1` Move the branch pointer 1 commit back
+- `git reset --hard <commit hash>`: Move the branch pointer commit hash and remove all changes
+- `git restore --staged <file>` Restore file to previous commit
+  - `--staged`: Remove from staging area
+  - `--worktree`: Remove from worktree
+- `git remote add origin https://github.com/yourusername/your-repo.git` Add remote repository
+  - `git remote -v` View remote repositories
+  - `git remote rename origin github` Rename remote repository
+- `git push -u origin main`
+  - `-u`: upstream
+  - `origin`: remote repository
+  - `main`: branch
+- `git fetch origin main`: Fetch the latest changes from the 'main' branch on the 'origin' remote repository.
+- `git pull origin main`: Fetch and merge
+- `git pull origin main --rebase`: Fetch and rebase
+- `git stash`: Stash changes
+  - `git stash pop`: Apply stashed changes
+  - `git stash list`: List stashed changes
+  - `git stash drop`: Drop stashed changes
+- `git diff <commit hash> <commit hash>`: Compare 2 commits
+- `git diff <commit hash> <commit hash> --name-only`: Compare 2 commits and show only the names of the files that changed
+
+### Git Commands (Still useful)
+- `gitk` opens commit history GUI
+- `git gui` opens GUI for staging changes
+- `git reflog` Shows all commits and git actions logged
+- `git cherry-pick <commit hash>`: Apply a specific commit's changes to a branch
+
+
+
+### Git Commands (Plumbing)
+- `git config pull.rebase false`: Disable rebase on pull
+- `git config --add --global user.email` "testemail@email.com"
+  - `git config`: Command to manage Git configuration.
+  - `--add`: Flag stating add config.
+  - `--global`: Flag stating if configuration is stored globally in `.gitconfig`. Opposite is: `local`, which stores config in current repo.
+  - `user.email`: The key. (`user` is the section, `email` is the section key)
+  - `"testemail@email.com"`: The key's value
+- `cat .\.git\config` or `git config --list --local`: View local config
+- `git config --remove-section <section name>`: Remove section (`user`) from config
+- System -> Global -> Local -> Worktree (git config --list --<system/global/local/worktree>)
+  - System: All users (`.gitconfig`)
+  - Global: Current User (`.gitconfig`)
+  - Local: Current Repo (`.git/config`)
+  - Worktree: Current Worktree (`.git/worktrees/<name>/config`)
+ 
 ### Git Notes
 - tree: git's way of storing a directory
 - blob: git's way of storing a file
-
+- Fast forward merge (rebasing): When you merge a branch that is ahead of your current branch. Instead of merging, it just moves the branch pointer.
+  - A---B
+  - C---D
+  - into
+  - A---B
+  -      \
+  -       C---D
+- Apparently you can nest the .gitignore
 
 ### Shortcuts
 
