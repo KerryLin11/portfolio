@@ -5,7 +5,7 @@ import darkPattern from "@/assets/backgroundPatterns/backgroundPattern3-dark_12.
 
 const BackgroundPattern: React.FC = () => {
     const [tileSize, setTileSize] = useState({ width: 100, height: 100 });
-    const [imageSrc, setImageSrc] = useState(lightPattern);
+    const imageSrc = lightPattern;
 
     useEffect(() => {
         const img = new Image();

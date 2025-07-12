@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
-import { FaEnvelope, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, } from 'react-icons/fa';
 import { motion } from 'framer-motion'
 import { handleClose } from '@/utils/audioUtils';
 
