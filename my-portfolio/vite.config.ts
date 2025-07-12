@@ -14,7 +14,7 @@ export default defineConfig({
     tailwindcss(),
 
   ],
-  base: '/my-portfolio/',
+  base: '/portfolio/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
