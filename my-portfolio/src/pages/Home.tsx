@@ -18,7 +18,7 @@ const nodeData: Node[] = [
         icon: <FaHome size={24} />,
         label: 'Kerry Lin',
         color: 'bg-bubble-1',
-        clickSound: '/sounds/click2.wav',
+        clickSound: 'sounds/click2.wav',
         position: { x: 0, y: 0 },
         children: [
             {
