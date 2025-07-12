@@ -7,11 +7,9 @@ import ContactSection from './pages/Contact';
 import DraggableCanvas from './components/mindmap buttons/DraggableCanvas';
 import DebugPage from './pages/DebugPage';
 
-
-
 function App() {
   return (
-    <Router>
+    <Router basename="/portfolio">
       <Routes>
         <Route path="/" element={
           <DraggableCanvas>
@@ -19,20 +17,16 @@ function App() {
           </DraggableCanvas>
         } />
 
-
         {/* Placeholder routes */}
-
-        {<Route path="/about" element={
+        <Route path="/about" element={
           <AboutSection onClose={() => { }} />
-        } />}
-        {<Route path="/projects" element={
+        } />
+        <Route path="/projects" element={
           <ProjectsSection onClose={() => { }} />
-        } />}
-        {<Route path="/contact" element={
+        } />
+        <Route path="/contact" element={
           <ContactSection onClose={() => { }} />
-        } />}
-
-
+        } />
 
         <Route path="/debug" element={
           <DebugPage />
@@ -43,4 +37,3 @@ function App() {
 }
 
 export default App;
-
