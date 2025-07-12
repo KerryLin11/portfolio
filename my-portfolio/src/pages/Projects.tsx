@@ -82,8 +82,8 @@ export const projects: Project[] = [
     {
         title: 'Freeze Foward',
         description: 'An ultra-challenging puzzle game where you manipulate block movement patterns and strategically freeze tiles to control their paths.',
-        src: '"https://itch.io/embed-upload/14211568?color=ffffff"',
-        github: 'https://github.com/m0j0man1ac/ProjectBlockFreeze',
+        src: 'https://itch.io/embed-upload/14211568?color=ffffff',
+        github: 'https://github.com/Team-BlockFreeze/ProjectBlockFreeze',
         tags: ['Unity', 'C#'],
         type: 'embed',
         details: (
