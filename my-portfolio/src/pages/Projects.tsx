@@ -80,6 +80,30 @@ export const projects: Project[] = [
 
     },
     {
+        title: 'Freeze Foward',
+        description: 'An ultra-challenging puzzle game where you manipulate block movement patterns and strategically freeze tiles to control their paths.',
+        src: '"https://itch.io/embed-upload/14211568?color=ffffff"',
+        github: 'https://github.com/m0j0man1ac/ProjectBlockFreeze',
+        tags: ['Unity', 'C#'],
+        type: 'embed',
+        details: (
+            <>
+                <p className="mb-4">
+                    <strong>Freeze Forward</strong> is an ultra-challenging puzzle game built for mobile in Unity, developed by me and 1 other during a quiet semester looking for a project to fill the time. The goal was to make something simple, intuitive, and lightweight in systems with the main focus being on polish and a complete experience.
+                </p>
+
+                <p className="mb-4">
+                    The idea was born from a challenge: design a puzzling mechanic from scratch. After brainstorming and diagramming on a chessboard grid, we landed on a deceptively simple mechanic involving blocks with fixed movement patterns and the ability to freeze them to control other blocks' paths. Simple as the game sounds, having designed all 120+ levels and watched playtesters struggle, the later levels are extremely difficult and require a deep understanding of the mechanics to complete.
+                </p>
+
+                <p className="mb-4">
+                    Compared to other projects, the code and logic were relatively straightforward but our emphasis on polish pushed me deep into design work. I focused heavily on shaders, textures, lighting, materials, UI/UX, and sound design to bring a minimal concept to life.
+                </p>
+            </>
+        )
+
+    },
+    {
         title: 'Culinary Overture: Gourmet Sonata in F Major',
         description: 'A 30 minute satirical, JavaScript-based visual novel starring an outrageously flamboyant food critic navigating culinary absurdities.',
         github: 'https://github.com/KerryLin11/Culinary-Overture-Gourmet-Sonata-in-F-Major',
@@ -103,30 +127,7 @@ export const projects: Project[] = [
         )
     },
 
-    {
-        title: 'Block the Block (private repo for now)',
-        description: 'An ultra-challenging puzzle game where you manipulate block movement patterns and strategically freeze tiles to control their paths.',
-        src: 'https://itch.io/embed-upload/',
-        github: 'https://github.com/m0j0man1ac/ProjectBlockFreeze',
-        tags: ['Unity', 'C#'],
-        type: 'embed',
-        details: (
-            <>
-                <p className="mb-4">
-                    <strong>Block the Block</strong> is an ultra-challenging puzzle game built for mobile in Unity, developed by me and 1 other during a quiet semester looking for a project to fill the time. The goal was to make something simple, intuitive, and lightweight in systems with the main focus being on polish and a complete experience.
-                </p>
 
-                <p className="mb-4">
-                    I was especially drawn to puzzle design for one reason: I had no idea how to approach it. Building levels around existing mechanics is one thing but inventing a mechanic that's inherently <i>puzzling</i> was something I couldn't wrap my head around at the time. After brainstorming and diagramming on a chessboard grid, we landed on a deceptively simple mechanic involving blocks with fixed movement patterns and the ability to freeze them to control other blocks' paths. And just like that, our "small" game turned out to have massive design scope.
-                </p>
-
-                <p className="mb-4">
-                    Compared to other projects, the code and logic were relatively straightforward but our emphasis on polish pushed me deep into design work. I focused heavily on shaders, textures, lighting, materials, UI/UX, and sound design to bring a minimal concept to life with clarity and style.
-                </p>
-            </>
-        )
-
-    },
 
     {
         title: 'Miscellaneous Personal Projects',
