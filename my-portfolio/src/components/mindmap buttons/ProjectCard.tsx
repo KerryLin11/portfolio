@@ -24,7 +24,7 @@ const ProjectCard = ({
             whileHover={{ scale: 1.02 }}
             onClick={() => {
                 if ((activeChildIndex !== null || activeIndex !== null) && project.type === 'folder') {
-                    playSound('/sounds/close3.wav', 0.5);
+                    playSound('sounds/close3.wav', 0.5);
                     setActiveChildIndex(null);
                     setActiveIndex(null);
                 } else {

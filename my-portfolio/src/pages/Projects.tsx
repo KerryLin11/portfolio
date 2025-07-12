@@ -260,7 +260,7 @@ const Projects = ({ onClose }: SectionProps) => {
             {(activeChildIndex !== null || activeIndex !== null) && (
                 <Button
                     onClick={() => {
-                        playSound('/sounds/close3.wav', 0.5);
+                        playSound('sounds/close3.wav', 0.5);
 
                         if (activeChildIndex !== null) {
                             setActiveChildIndex(null);
