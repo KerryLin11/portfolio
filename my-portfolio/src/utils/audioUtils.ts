@@ -1,3 +1,9 @@
+// audioUtils.ts
+
+function getAssetPath(relativePath: string): string {
+    return new URL(relativePath, import.meta.env.BASE_URL).href;
+}
+
 export const playSoundRandom = (
     src: string,
     initialVolume: number,
@@ -5,7 +11,7 @@ export const playSoundRandom = (
     initialPlaybackRate: number,
     playbackRateRange: number
 ) => {
-    const audio = new Audio(src);
+    const audio = new Audio(getAssetPath(src));
     const clamp = (num: number, min: number, max: number) => Math.min(Math.max(num, min), max);
     audio.volume = clamp(initialVolume + (Math.random() * 2 - 1) * volumeRange, 0, 1);
     audio.playbackRate = clamp(initialPlaybackRate + (Math.random() * 2 - 1) * playbackRateRange, 0.1, 4);
@@ -17,17 +23,17 @@ const playSoundAndRun = (
     callback: () => void,
     volume: number = 0.5
 ) => {
-    const audio = new Audio(src);
+    const audio = new Audio(getAssetPath(src));
     audio.volume = volume;
     audio.play().catch((e) => console.error('SFX play failed', e));
     callback();
 };
 
 export const handleClose = (callback: () => void) =>
-    playSoundAndRun('/sounds/close3.wav', callback, 0.5);
+    playSoundAndRun('sounds/close3.wav', callback, 0.5);
 
 export const playSound = (src: string, volume: number = 0.5) => {
-    const audio = new Audio(src);
+    const audio = new Audio(getAssetPath(src));
     audio.volume = volume;
     audio.play().catch((e) => console.error('SFX play failed', e));
 };

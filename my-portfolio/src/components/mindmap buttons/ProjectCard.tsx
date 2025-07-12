@@ -28,7 +28,7 @@ const ProjectCard = ({
                     setActiveChildIndex(null);
                     setActiveIndex(null);
                 } else {
-                    playSoundRandom('/sounds/click_project1.wav', 0.5, 0.05, 1, 0.1);
+                    playSoundRandom('sounds/click_project1.wav', 0.5, 0.05, 1, 0.1);
                 }
             }}
             className="rounded-xl shadow-md p-6 text-left transition-transform"

@@ -24,8 +24,8 @@ const Bubble = ({
     hoverSound,
 }: BubbleProps) => {
 
-    const defaultClickSound = '/sounds/click1.wav';
-    const defaultHoverSound = '/sounds/hover1.wav';
+    const defaultClickSound = 'sounds/click1.wav';
+    const defaultHoverSound = 'sounds/hover1.wav';
 
     return (
         <div className="flex flex-col items-center gap-2" style={style}>
