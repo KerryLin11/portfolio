@@ -41,7 +41,10 @@ const AboutSection = ({ onClose }: SectionProps) => {
 
             <div className="flex gap-3 text-sm mb-4">
                 <motion.a
-                    href="https://docs.google.com/document/d/1lKEPQl7nWUacM-ZKY-j0NAxvY_ijle8O7mPAvnQrILY/export?format=pdf"
+                    href="https://docs.google.com/presentation/d/17-rbgEgcsZYUHSaI0AdE3jNC2c92LAqFc6PqPhnjKDI/export/pdf" //! Game Resume
+                    //https://docs.google.com/presentation/d/139Ivx53aOvsYiJQuQw3u_xK6qSrxA2w-8C2Qbuwijac/export/pdf //! Web Resume
+                    //TODO: //! Software Engineer Resume
+
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 px-3 py-1 rounded-md "

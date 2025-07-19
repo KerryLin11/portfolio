@@ -117,11 +117,11 @@ export const projects: Project[] = [
                 </p>
 
                 <p className="mb-4">
-                    The entire game runs off a single <code>game.js</code> file. The code is very chaotic and me not knowing what a tree structure was back then was a big headache because the dialogue system is basically a flat array of text nodes stitched together with player choices and zigzagging narrative branches—but I choreographed every element: from character expressions and sprite animations to text speed, sound effects, and transitions, all timed line-by-line on every one of those <i>thousands</i> of text nodes.
+                    The entire game runs off a single <code>game.js</code> file. The code is very chaotic and the dialogue system is basically a flat array of text nodes stitched together with player choices and zigzagging narrative branches but I choreographed every element: from character expressions and sprite animations to text speed, sound effects, and transitions, all timed line-by-line on every one of those <i>thousands</i> of text nodes. 
                 </p>
 
                 <p className="mb-4">
-                    Despite the messiness under the hood, I still adore this project, enough to showcase it. It's ridiculous, expressive, and one of the most fun experiences I've had building and screenwriting from scratch—especially now that I can look back on it as a more experienced programmer with a soft spot for this wild first effort.
+                    But despite the messiness, I still adore this project, enough to showcase it. It's ridiculous, expressive, and one of the most fun experiences I've had building and screenwriting from scratch especially now that I can look back on it as a more experienced programmer.
                 </p>
             </>
         )
