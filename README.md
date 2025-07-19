@@ -1,3 +1,10 @@
+# TODO:
+- Decorate and stylize with:
+    - Links: (also remember to default open in new tab)
+        - Youtube
+        - Github
+        - itch (for games )
+    - Environmental naturalistic components (see https://bruno-simon.com/)
 # Learning Outcomes
 
 ## Technologies I want to learn
